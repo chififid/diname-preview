@@ -1,0 +1,108 @@
+[
+  {
+    "file": "media/frette-hero.mp4",
+    "url": "https://eu.frette.com/on/demandware.static/-/Library-Sites-FretteSharedLibrary/default/dw17ef69b2/images/fretteus/homepage/1110-HP-flip-hero-video-desktop.mp4"
+  },
+  {
+    "file": "media/frette-poster.jpg",
+    "url": "https://eu.frette.com/on/demandware.static/-/Library-Sites-FretteSharedLibrary/default/dw4dbb1f6b/images/fretteus/homepage/1110-HP-flip-hero-video-desktop-still.jpg"
+  },
+  {
+    "file": "vendor/lenis.min.js",
+    "url": "https://unpkg.com/lenis@1.3.27/dist/lenis.min.js"
+  },
+  {
+    "file": "vendor/lenis.css",
+    "url": "https://unpkg.com/lenis@1.3.27/dist/lenis.css"
+  },
+  {
+    "file": "vendor/lenis-LICENSE.txt",
+    "url": "https://unpkg.com/lenis@1.3.27/LICENSE"
+  },
+  {
+    "file": "media/bath-towel.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/CRISP-TELO-BAGNO_CASTAGNA_01.jpg?v=1777887614",
+    "source": "https://eu.societylimonta.com/products/crisp-bath-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/waffle-towel.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/NINHO-TELO-BAGNO_BIANCO_01_ea2df95c-999c-48e5-9b0b-0ef029cfe306.jpg?v=1777889131",
+    "source": "https://eu.societylimonta.com/products/ninho-bath-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/bath-detail.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/crisp-telo-bagno_castagna_02_9b724cd4-35c2-4be3-85b7-96ef57dc72df.jpg?v=1793145689",
+    "source": "https://eu.societylimonta.com/products/crisp-bath-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/waffle-detail.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/ninho-telo-bagno_bianco_02.jpg?v=1792980173",
+    "source": "https://eu.societylimonta.com/products/ninho-bath-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/kitchen-taupe.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/BON-ASCIUGAPIATTI_MALTO_01.jpg?v=1777887204",
+    "source": "https://eu.societylimonta.com/products/bon-dish-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/kitchen-ivory.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/BON-ASCIUGAPIATTI_BIANCO_01.jpg?v=1777887169",
+    "source": "https://eu.societylimonta.com/products/bon-dish-towel",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/blanket-sand.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/NID-COPERTA_CANYON_01.jpg?v=1777886149",
+    "source": "https://eu.societylimonta.com/products/nid-blanket",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/blanket-caramel.jpg",
+    "url": "https://cdn.shopify.com/s/files/1/0257/6731/3513/files/TURNER-PLAID_CANYON_01_c6379774-67d4-4fbe-bc25-c4a24825629e.jpg?v=1789381321",
+    "source": "https://eu.societylimonta.com/products/turner-throw",
+    "note": "Временный визуальный пример, не товар DINAME"
+  },
+  {
+    "file": "media/kitchen-scene.jpg",
+    "url": "https://eu.societylimonta.com/cdn/shop/files/bon-tovaglia_castagna_02_800x.jpg?v=1790769217",
+    "source": "https://eu.societylimonta.com/collections/tablecloths"
+  },
+  {
+    "file": "../assets/873c95c53696f4b0.webp",
+    "source": "https://cultiver.com/pages/bathroom-lookbook"
+  },
+  {
+    "file": "../assets/612d79aae99b1d41.webp",
+    "source": "https://eu.societylimonta.com/"
+  },
+  {
+    "file": "media/wordmark.svg",
+    "source": "context/photos/brand_2.png",
+    "note": "Векторная трассировка рисунка в кривые Безье; без встроенного растра, без строки collection."
+  },
+  {
+    "file": "media/limonta-hero.mov",
+    "url": "https://cdn.shopify.com/videos/c/o/v/9751059392c848b5a082e1b07cc0740a.mov",
+    "source": "https://www.societylimonta.com/"
+  },
+  {
+    "file": "media/third-bath.jpg",
+    "local_source": "design/photos/assets/societybath-14.jpg",
+    "note": "Временный пример для варианта с тремя товарами"
+  },
+  {
+    "file": "media/third-kitchen.jpg",
+    "local_source": "design/photos/assets/teatowels-03.jpg",
+    "note": "Временный пример для варианта с тремя товарами"
+  },
+  {
+    "file": "media/third-bedroom.jpg",
+    "local_source": "design/photos/assets/once-03.jpg",
+    "note": "Временный пример для варианта с тремя товарами"
+  }
+]
