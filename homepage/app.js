@@ -398,3 +398,8 @@ renderCombinations();
  document.querySelector('#reset').addEventListener('click',()=>{value='grid';render();try{localStorage.removeItem(key)}catch{}});
  render();
 })();
+
+// Expose the existing preview controls on phones without a hardware keyboard.
+document.querySelector('.mobile-preview-settings').addEventListener('click',()=>{
+ openDialog('settings');document.querySelector('#tab-categories').click();
+});
