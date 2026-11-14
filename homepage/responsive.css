@@ -198,3 +198,6 @@
  .wholesale[data-composition=flatlay]::before{display:block;background:radial-gradient(ellipse at center,rgba(250,247,240,.82),rgba(250,247,240,.48) 55%,rgba(250,247,240,.12))}
  .wholesale[data-composition=flatlay] .wholesale-copy{padding:0 1.5rem}
 }
+
+/* On small phones search belongs in the future navigation drawer. */
+@media(max-width:440px){.header .nav-right .icon:first-child{display:none}}
