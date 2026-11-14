@@ -1,12 +1,12 @@
 const root = document.documentElement;
 const storageKey = 'diname-homepage-study-v1';
-const defaults = { hero: 'armadillo', font: 'prata', palette: 'walnut', video: 'limonta', language: 'ru', category: 'center', density: 'triple', cardinfo: 'below', categorytext: 'normal', motion: true, sticky: true, heights: {cocoon:'full',frette:'compact',armadillo:'full'} };
+const defaults = { hero: 'armadillo', font: 'prata', palette: 'walnut', video: 'limonta', language: 'ru', density: 'triple', cardinfo: 'below', sticky: true, heights: {cocoon:'full',frette:'compact',armadillo:'full'} };
 const presetRevision='approved-homepage-2026-11-13';
 let hasPreferredDefaults=false;
 let settings = { ...defaults, heights: {...defaults.heights} };
-try { const saved = JSON.parse(localStorage.getItem(storageKey)); hasPreferredDefaults=saved?.presetRevision===presetRevision; for (const key of ['hero','font','palette','video','category','language','density','cardinfo','categorytext']) { if ({hero:['cocoon','frette','armadillo'],font:['prata','forum','cormorant'],palette:['linen','walnut'],video:['frette','limonta'],category:['split','center'],language:['ru','en'],density:['large','triple'],cardinfo:['below','overlay'],categorytext:['normal','large']}[key].includes(saved?.[key])) settings[key] = saved[key]; } for(const hero of ['cocoon','frette','armadillo']){if(['full','compact'].includes(saved?.heights?.[hero]))settings.heights[hero]=saved.heights[hero];} if(typeof saved?.motion === 'boolean') settings.motion = saved.motion; if(typeof saved?.sticky === 'boolean') settings.sticky = saved.sticky; } catch {}
+try { const saved = JSON.parse(localStorage.getItem(storageKey)); hasPreferredDefaults=saved?.presetRevision===presetRevision; for (const key of ['hero','font','palette','video','language','density','cardinfo']) { if ({hero:['cocoon','frette','armadillo'],font:['prata','forum','cormorant'],palette:['linen','walnut'],video:['frette','limonta'],language:['ru','en'],density:['large','triple'],cardinfo:['below','overlay']}[key].includes(saved?.[key])) settings[key] = saved[key]; } for(const hero of ['cocoon','frette','armadillo']){if(['full','compact'].includes(saved?.heights?.[hero]))settings.heights[hero]=saved.heights[hero];} if(typeof saved?.sticky === 'boolean') settings.sticky = saved.sticky; } catch {}
 // Apply the approved defaults once, preserving later comparison choices.
-if(!hasPreferredDefaults){for(const key of ['hero','video','language','category','density','cardinfo','categorytext','sticky'])settings[key]=defaults[key];settings.heights.armadillo='full';}
+if(!hasPreferredDefaults){for(const key of ['hero','video','language','density','cardinfo','sticky'])settings[key]=defaults[key];settings.heights.armadillo='full';}
 // Adopt the new baseline once, then retain subsequent comparisons.
 try{if(JSON.parse(localStorage.getItem(storageKey))?.layoutRevision!=='compact-walnut-2026-11-14'){settings.density='triple';settings.palette='walnut';}}catch{}
 // Adopt captions below once; keep subsequent comparison choices.
@@ -27,11 +27,9 @@ categories.forEach((category,index)=>Object.assign(category,categoryEditorial[in
 categories[0].items.push(['Вафельное полотенце','Песочный · 70 × 140 см','2 100 ₽','third-bath.webp']);
 categories[1].items.push(['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','third-kitchen.webp']);
 categories[2].items.push(['Мягкий плед','Молочный · 140 × 200 см','7 200 ₽','third-bedroom.webp']);
-// Keep original product photographs available for comparison.
+// Unified product photography is the only supported collection presentation.
 const products = [];
-const photoStudyKey='diname-photo-study-v2';
-let photoStudy='all';try{photoStudy=localStorage.getItem(photoStudyKey)||'all'}catch{}
-document.querySelector('.collections').innerHTML = categories.map((c,i)=>`<section class="collection-row ${i%2?'reverse':''}" id="${c.id}" aria-labelledby="${c.id}-title"><article class="category"><div class="category-media"><img src="${photoStudy==='all'&&c.id==='kitchen'?'media/kitchen-editorial.webp':c.photo}" alt="Текстиль в домашнем интерьере" loading="eager" decoding="async" width="1000" height="1000"></div><div class="category-content"><h2 id="${c.id}-title">${c.heading.map(line=>`<span>${line}</span>`).join(' ')}</h2><div class="category-copy"><p class="category-description">${c.text}</p><button type="button" class="outline category-button" data-category="${c.id}">${c.action}</button></div></div></article><div class="collection-products">${c.items.map((item,itemIndex)=>{ const n=products.push({name:item[0],detail:item[1],price:item[2],image:'media/'+item[3],category:c.id})-1;return `<button type="button" class="product-card ${itemIndex===2?'third-product':''} ${item[4]?'has-detail':'zoom-detail'}" data-product="${n}" aria-label="${item[0]}, ${item[1]}"><span class="product-media"><img src="media/${photoStudy==='all'?`${c.id}-studio-${itemIndex+1}.webp`:item[3]}" alt="${item[0]}" width="800" height="1000" loading="eager" decoding="async">${item[4]?`<img class="alternate" ${photoStudy==='all'?'':`src="media/${item[4]}"`} alt="" width="800" height="1000" loading="eager" decoding="async">`:''}</span><span class="product-info"><span><strong>${item[0]}</strong><small>${item[1]}</small></span><span class="price">${item[2]}</span></span></button>`;}).join('')}</div></section>`).join('');
+document.querySelector('.collections').innerHTML = categories.map((c,i)=>`<section class="collection-row ${i%2?'reverse':''}" id="${c.id}" aria-labelledby="${c.id}-title"><article class="category"><div class="category-media"><img src="${c.id==='kitchen'?'media/kitchen-editorial.webp':c.photo}" alt="Текстиль в домашнем интерьере" loading="eager" decoding="async" width="1000" height="1000"></div><div class="category-content"><h2 id="${c.id}-title">${c.heading.map(line=>`<span>${line}</span>`).join(' ')}</h2><div class="category-copy"><p class="category-description">${c.text}</p><button type="button" class="outline category-button" data-category="${c.id}">${c.action}</button></div></div></article><div class="collection-products">${c.items.map((item,itemIndex)=>{ const n=products.push({name:item[0],detail:item[1],price:item[2],image:`media/${c.id}-studio-${itemIndex+1}.webp`,category:c.id})-1;return `<button type="button" class="product-card ${itemIndex===2?'third-product':''} zoom-detail" data-product="${n}" aria-label="${item[0]}, ${item[1]}"><span class="product-media"><img src="media/${c.id}-studio-${itemIndex+1}.webp" alt="${item[0]}" width="800" height="1000" loading="eager" decoding="async"></span><span class="product-info"><span><strong>${item[0]}</strong><small>${item[1]}</small></span><span class="price">${item[2]}</span></span></button>`;}).join('')}</div></section>`).join('');
 const translations = {
   "Магазин": "Shop",
   "Оптовым партнёрам": "Trade enquiries",
@@ -181,10 +179,10 @@ function applyLanguage(){
  categories.forEach((category,index)=>{
   const section=document.getElementById(category.id), heading=section.querySelector('h2');
   heading.replaceChildren();
-  const lines=settings.category==='split'?[t(category.title)]:category.heading.map(t);
+  const lines=category.heading.map(t);
   lines.forEach(line=>{const span=document.createElement('span');span.textContent=line;heading.append(span);});
   const description=section.querySelector('.category-description');description.replaceChildren();
-  categoryCopy[index][settings.category==='split'?0:1].split('|').forEach(line=>{const span=document.createElement('span');span.textContent=line;description.append(span);});
+  categoryCopy[index][1].split('|').forEach(line=>{const span=document.createElement('span');span.textContent=line;description.append(span);});
  });
 
 }
@@ -242,7 +240,7 @@ function renderScroll(){
  else if(direction>0 && travel>Math.max(600*layoutScale(),innerHeight*.8) && now-downStarted>1000){
   headerTarget=headerHeight;
  }
- if(settings.motion&&!motionPreference.matches){
+ if(!motionPreference.matches){
   const hero=document.querySelector('.hero');
   if(y<hero.offsetHeight) video.parentElement.style.transform=`translate3d(0,${Math.min(y*.15,hero.offsetHeight*.09)}px,0)`;
   parallaxImages.forEach(img=>{const r=img.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const offset=Math.max(-r.height*.115,Math.min(r.height*.115,(innerHeight/2-r.top-r.height/2)*.15));img.style.transform=`translate3d(0,${offset}px,0)`;}});
@@ -274,20 +272,20 @@ function frame(time){
 requestAnimationFrame(frame);
 function syncMotion(){
  lenis?.destroy();lenis=null;
- const active=settings.motion&&!motionPreference.matches;
+ const active=!motionPreference.matches;
  if(active && window.Lenis) lenis=new Lenis({lerp:.1,smoothWheel:true,syncTouch:false,autoRaf:false,anchors:{offset:-64},prevent:node=>Boolean(node.closest('[data-lenis-prevent]'))});
  if(!active){video.parentElement.style.transform='';parallaxImages.forEach(img=>img.style.transform='');}
  resumeVideo();
  requestRender();
 }
 function applySettings(){
- for(const key of ['hero','font','palette','video','category','language','density','cardinfo','categorytext']){root.dataset[key]=settings[key];document.querySelector(`input[name="${key}"][value="${settings[key]}"]`).checked=true;}
+ for(const key of ['hero','font','palette','video','language','density','cardinfo']){root.dataset[key]=settings[key];document.querySelector(`input[name="${key}"][value="${settings[key]}"]`).checked=true;}
  root.dataset.height=settings.heights[settings.hero];
  document.querySelector(`input[name="height"][value="${settings.heights[settings.hero]}"]`).checked=true;
  root.dataset.balance=settings.density==='triple'?'taller':'aligned';
  document.querySelectorAll('.third-product').forEach(card=>card.hidden=settings.density==='large');
  applyLanguage();
- document.querySelector('#motion').checked=settings.motion;
+ root.dataset.category='center';root.dataset.categorytext='normal';
  document.querySelector('#sticky-products').checked=settings.sticky;
  try{localStorage.setItem(storageKey,JSON.stringify({...settings,presetRevision,layoutRevision:'compact-walnut-2026-11-14',captionRevision:'below-v2'}));}catch{}
  const nextVideo=settings.video==='limonta'?'media/limonta-hero-web.mp4':'media/frette-hero-web.mp4';
@@ -295,7 +293,7 @@ function applySettings(){
  syncMotion();
 }
 applySettings();motionPreference.addEventListener('change',syncMotion);
-document.querySelector('#settings').addEventListener('change',e=>{if(['hero','font','palette','video','category','language','density','cardinfo','categorytext'].includes(e.target.name))settings[e.target.name]=e.target.value;else if(e.target.name==='height')settings.heights[settings.hero]=e.target.value;else if(e.target.id==='motion')settings.motion=e.target.checked;else if(e.target.id==='sticky-products')settings.sticky=e.target.checked;applySettings();if(document.querySelector('dialog[open]'))lenis?.stop();});
+document.querySelector('#settings').addEventListener('change',e=>{if(['hero','font','palette','video','language','density','cardinfo'].includes(e.target.name))settings[e.target.name]=e.target.value;else if(e.target.name==='height')settings.heights[settings.hero]=e.target.value;else if(e.target.id==='sticky-products')settings.sticky=e.target.checked;applySettings();if(document.querySelector('dialog[open]'))lenis?.stop();});
 document.querySelector('#reset').addEventListener('click',()=>{settings={...defaults,heights:{...defaults.heights}};applySettings();lenis?.stop();});
 function openDialog(id){if(id!=='settings')return;document.querySelectorAll('dialog[open]').forEach(d=>d.close());const dialog=document.getElementById(id);dialog.showModal();lenis?.stop();showHeader();}
 document.querySelectorAll('dialog').forEach(d=>{
@@ -341,30 +339,8 @@ settingsTabs.forEach((tab,index)=>{
  });
 });
 
-// Prototype-only colour control: transparent Bath assets keep their own lighting.
-// Image-only composition study: original labels and category layouts stay intact.
-
-function setPhotoStudy(mode){
- if(!['original','all'].includes(mode))mode='all';
- document.querySelector(`input[name="photo-study"][value="${mode}"]`).checked=true;
- categories.forEach((category)=>{
-  const row=document.getElementById(category.id),active=mode==='all';
-  row.classList.toggle('studio-study',active);
-  if(category.id==='kitchen')row.querySelector('.category-media img').src=active?'media/kitchen-editorial.webp':category.photo;
-  row.querySelectorAll('.product-card').forEach((card,i)=>{
-   const item=category.items[i],src='media/'+(active?`${category.id}-studio-${i+1}.webp`:item[3]);
-   card.querySelector('.product-media img').src=src;
-   const alternate=card.querySelector('.alternate');if(alternate){alternate.hidden=active;if(!active)alternate.src='media/'+item[4];}
-   card.classList.toggle('has-detail',!active&&!!item[4]);
-   products[Number(card.dataset.product)].image=src;
-  });
- });
- try{localStorage.setItem(photoStudyKey,mode)}catch{}
-}
-
-setPhotoStudy(photoStudy);
-document.querySelectorAll('input[name="photo-study"]').forEach(input=>input.addEventListener('change',()=>setPhotoStudy(input.value)));
-document.querySelector('#reset').addEventListener('click',()=>setPhotoStudy('all'));
+// Approved photography is fixed; old photo-study preferences are no longer read.
+document.querySelectorAll('.collection-row').forEach(row=>row.classList.add('studio-study'));
 
 // Each palette remembers its own coordinated colour arrangement.
 const combinationKey='diname-palette-combinations-v2';
@@ -381,19 +357,3 @@ document.querySelectorAll('[data-colourway-button]').forEach(button=>button.addE
 new MutationObserver(renderCombinations).observe(root,{attributes:true,attributeFilter:['data-palette']});
 document.querySelector('#reset').addEventListener('click',()=>{combinations={linen:'1',walnut:'1'};try{localStorage.removeItem(combinationKey)}catch{}renderCombinations()});
 renderCombinations();
-
-// Native mobile product layout comparison; no slider library or gesture interception.
-(()=>{
- // Every visit starts with the approved single-column layout.
- let value='grid';
- function render(){
-  root.dataset.mobileProducts=value;
-  document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.checked=input.value===value);
-  document.querySelectorAll('.collection-products').forEach(rail=>rail.scrollLeft=0);
- }
- document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.addEventListener('change',()=>{
-  value=input.value;render();
- }));
- document.querySelector('#reset').addEventListener('click',()=>{value='grid';render();});
- render();
-})();

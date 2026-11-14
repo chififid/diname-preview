@@ -1,5 +1,6 @@
 /* Below the desktop artboard: reflow components instead of scaling down type. */
-.collection-products{display:contents}
+.collection-products,.product-slider,.product-slider-viewport{display:contents}
+.product-slider-controls{display:none}
 @media(max-width:1199px){
  :root{--page-inset:2rem;--gutter:1rem;--space-half:1rem;--content-inset:var(--page-inset);--layout-unit:1vw;--section-space:3.5rem;--copy-gap:1.5rem;--display-section:2rem;--display-secondary:2rem}
  body{font-size:1rem}
@@ -134,20 +135,19 @@
  [data-hero=armadillo] .hero-content{gap:1.5rem}
  .hero-actions{max-width:100%;padding-right:0}
  [data-height=full] .hero{height:100svh;min-height:34rem}
- [data-density][data-category] .collections .category,[data-density][data-category] .collections .category-content{min-height:27rem!important;aspect-ratio:auto!important}
+ [data-density][data-category] .collections .category,[data-density][data-category] .collections .category-content{min-height:30rem!important;aspect-ratio:auto!important}
  [data-density][data-category] .collections .category-content{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:1.5rem;padding:1.25rem}
  [data-density][data-category] .collections .category h2{align-self:flex-start;font-size:2rem;line-height:1.2}
  [data-density][data-category] .collections .category-copy{align-self:flex-start;max-width:none;gap:1rem}
- .collection-products,[data-density=large] .collection-products{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--panel) transparent;padding:0 0 .75rem;scroll-padding-inline:0}
- [data-density] .collections .collection-products .product-card{flex:0 0 56%;scroll-snap-align:start}
- [data-density=large] .collections .collection-products .product-card{flex-basis:calc((100% - .75rem)/2)}
  [data-density] .collections .product-info,[data-density] .collections .product-info small,[data-density] .collections .price{font-size:.875rem;line-height:1.5;overflow-wrap:anywhere}
  [data-cardinfo=overlay] .collections .collection-row .product-card{aspect-ratio:3/5}
  [data-cardinfo=overlay] .collections .product-info{padding:.75rem}
- .materials-copy{min-height:24rem;padding:2.75rem 1.25rem}
+ .materials-photos{aspect-ratio:1.1}
+ .materials-copy{min-height:27rem;padding:3.25rem 1.25rem}
+ .collections,[data-density=triple] .collections{gap:3rem;padding-bottom:2rem}
  [data-density] .materials h2,[data-density] .story-copy h2{font-size:1.875rem;line-height:1.25}
  .home-story,[data-density=triple] .home-story,[data-density=large] .home-story{min-height:34rem;padding:3rem 0}
- .events[data-layout],[data-density=large] .events[data-layout]{padding-block:3rem}
+ .events[data-layout],[data-density=large] .events[data-layout]{padding-block:4rem}
  .events .closing-heading h2{font-size:1.875rem;line-height:1.25}
  .events-alternating{grid-template-columns:1fr;grid-auto-rows:auto;gap:0}
  .events-alternating>img{height:auto;aspect-ratio:4/3;min-height:0}
@@ -175,7 +175,7 @@
  .site-footer[data-layout=right] .footer-contacts{grid-template-columns:1fr;gap:.75rem}
  .footer-bottom{padding-block:1.75rem}
  .footer-socials{gap:0}
- .footer-navigation{padding-block:2.5rem;gap:2rem 1rem}
+ .footer-navigation{padding-block:3.5rem;gap:2rem 1rem}
  .footer-navigation a,.footer-navigation button{overflow-wrap:anywhere}
  .settings{width:calc(100% - 1rem);max-height:calc(100dvh - 1rem);padding:1.25rem}
  .settings .options{flex-wrap:wrap}
@@ -193,7 +193,7 @@
  [data-mobile-products=grid] .collections .collection-products .product-card{min-width:0;flex-basis:auto}
  [data-mobile-products=grid][data-cardinfo=overlay] .collections .collection-products .product-card{aspect-ratio:auto;min-height:19rem}
  [data-mobile-products=grid][data-cardinfo=overlay] .collections .product-info{padding:.5rem}
- .wholesale[data-composition=flatlay],[data-density=large] .wholesale[data-composition=flatlay]{display:grid;place-items:center;min-height:30rem;padding:3rem 0}
+ .wholesale[data-composition=flatlay],[data-density=large] .wholesale[data-composition=flatlay]{display:grid;place-items:center;min-height:34rem;padding:3.5rem 0}
  .wholesale-scene{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center;z-index:-2}
  .wholesale[data-composition=flatlay]::before{display:block;background:radial-gradient(ellipse at center,rgba(250,247,240,.82),rgba(250,247,240,.48) 55%,rgba(250,247,240,.12))}
  .wholesale[data-composition=flatlay] .wholesale-copy{padding:0 1.5rem}
@@ -201,3 +201,27 @@
 
 /* On small phones search belongs in the future navigation drawer. */
 @media(max-width:440px){.header .nav-right .icon:first-child{display:none}}
+
+/* Optional phone comparison: Embla handles horizontal dragging, the page keeps vertical gestures. */
+@media(max-width:600px){
+ [data-mobile-products=rail] .product-slider{display:block;min-width:0}
+ [data-mobile-products=rail] .product-slider-viewport{display:block;overflow:hidden}
+ [data-mobile-products=rail] .collection-products{display:flex;gap:.75rem;touch-action:pan-y pinch-zoom}
+ [data-mobile-products=rail][data-density] .collections .collection-products .product-card{flex:0 0 76%;min-width:0}
+ [data-mobile-products=rail] .product-slider-controls{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+ .product-slider-arrows,.product-slider-dots{display:flex;gap:.5rem}
+ .product-slider-controls button{display:grid;place-items:center;width:2.75rem;height:2.75rem;padding:0;background:none;color:var(--ink);border:1px solid color-mix(in srgb,var(--ink) 30%,transparent);transition:opacity .2s ease}
+ .product-slider-controls button:disabled{opacity:.3}
+ .product-slider-controls svg{width:1.25rem;height:1.25rem;fill:none;stroke:currentColor;stroke-width:1.5}
+ .product-slider-dots button{border:0;width:1.75rem}
+ .product-slider-dots button::after{content:"";width:.375rem;height:.375rem;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .2s ease}
+ .product-slider-dots button[aria-current=true]::after{opacity:1}
+}
+
+/* A section break after the products, larger than the gaps between collections. */
+@media(max-width:1199px){
+ .collections,[data-density=triple] .collections{padding-bottom:4rem}
+}
+@media(max-width:600px){
+ .collections,[data-density=triple] .collections{padding-bottom:4.5rem}
+}

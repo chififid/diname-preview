@@ -1,7 +1,7 @@
 (()=>{
  const root=document.documentElement,section=document.querySelector('#events'),content=document.querySelector('#events-content');
  const storageKey='diname-events-study-v3';let layout='alternating',active=0;
- try{const saved=localStorage.getItem(storageKey);if(['pair','slider','alternating','hidden'].includes(saved))layout=saved}catch{}
+ try{const saved=localStorage.getItem(storageKey);if(['slider','alternating','hidden'].includes(saved))layout=saved}catch{}
  // Fictional event data, explicitly requested for composition studies. Newest first.
  const events=[
  {city:['Алматы','Almaty'],name:['Дни домашнего текстиля','Home Textile Days'],date:['18–20 марта 2027','18–20 March 2027'],venue:['Atelier Hall','Atelier Hall'],address:['ул. Садовая, 24','24 Sadovaya Street'],stand:'A12',photo:1},
@@ -22,8 +22,6 @@
  function render(){active=0;section.hidden=layout==='hidden';section.dataset.layout=layout;section.querySelector('h2').innerHTML=c().heading;section.querySelector('.closing-heading>p').textContent=c().intro;document.querySelector(`input[name="event-layout"][value="${layout}"]`).checked=true;
  if(layout==='slider'){
  content.innerHTML=`<nav class="event-nav" aria-label="${c().rail}">${events.map((e,i)=>`<button type="button" data-event-go="${i}" aria-current="${i===0}"><small>${text(e,'date')}</small><span>${text(e,'city')}</span></button>`).join('')}</nav><div class="event-window" role="region" aria-label="${c().rail}"><div class="event-track">${events.map((e,i)=>`<article class="event-slide">${photo(e)}<div class="event-copy"><h3>${text(e,'city')}</h3>${facts(e)}${link(i)}</div></article>`).join('')}</div></div>${arrows()}`;go(0,true);
- }else if(layout==='pair'){
- content.innerHTML=`<div class="events-pair">${events.slice(0,2).map((e,i)=>`<article class="event-pair">${photo(e)}<div class="event-copy"><div><h3>${text(e,'city')}</h3><p class="event-name">${text(e,'name')}</p></div>${facts(e)}${link(i)}</div></article>`).join('')}</div>`;
  }else if(layout==='alternating'){
  content.innerHTML=`<div class="events-alternating">${events.slice(0,2).map((e,i)=>`${photo(e)}<article class="event-panel"><h3>${text(e,'city')}</h3><p class="event-name">${text(e,'name')}</p>${facts(e)}${link(i)}</article>`).join('')}</div>`;
  }else content.replaceChildren();
