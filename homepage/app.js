@@ -384,22 +384,16 @@ renderCombinations();
 
 // Native mobile product layout comparison; no slider library or gesture interception.
 (()=>{
- const key='diname-mobile-products-v1';
+ // Every visit starts with the approved single-column layout.
  let value='grid';
- try{if(localStorage.getItem(key)==='rail')value='rail';}catch{}
  function render(){
   root.dataset.mobileProducts=value;
   document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.checked=input.value===value);
   document.querySelectorAll('.collection-products').forEach(rail=>rail.scrollLeft=0);
  }
  document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.addEventListener('change',()=>{
-  value=input.value;render();try{localStorage.setItem(key,value)}catch{}
+  value=input.value;render();
  }));
- document.querySelector('#reset').addEventListener('click',()=>{value='grid';render();try{localStorage.removeItem(key)}catch{}});
+ document.querySelector('#reset').addEventListener('click',()=>{value='grid';render();});
  render();
 })();
-
-// Expose the existing preview controls on phones without a hardware keyboard.
-document.querySelector('.mobile-preview-settings').addEventListener('click',()=>{
- openDialog('settings');document.querySelector('#tab-categories').click();
-});
