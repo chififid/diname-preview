@@ -1,0 +1,49 @@
+/* Selected composition: photograph and colour, without gutters. */
+.materials{--material-scale:1;--material-height:max(360px,calc(50vw * var(--material-scale)));--material-ground:var(--material-surface);--material-ink:var(--material-text);display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:var(--material-height);margin:0;padding:0;scroll-margin-top:76px;color:var(--material-ink)}
+.materials-photos{position:relative;min-width:0;overflow:hidden;background:var(--panel)}
+.materials-photo{position:absolute;inset:0;margin:0;overflow:hidden}
+.materials-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 59%;display:block}
+.materials-copy{display:flex;align-items:center;flex-direction:column;justify-content:center;text-align:center;background:var(--material-ground);padding:24px clamp(24px,4.2vw,80px);min-width:0}
+.materials-mark{width:58px;height:44px;margin-bottom:10px;color:var(--material-ink);flex:none}
+.materials-mark svg,.material-symbol-options svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
+.materials-mark [hidden]{display:none}
+.materials h2{font-family:var(--display);font-size:clamp(30px,3.2vw,46px);font-weight:400;letter-spacing:-.025em;line-height:1.17;text-transform:none;text-wrap:balance}
+.materials h2 span{display:block}
+.materials-description{font-size:15px;line-height:1.6;max-width:390px;margin:var(--copy-gap,24px) auto 0;text-wrap:pretty}
+#panel-materials .materials-preview-button{display:block;min-height:44px;width:100%;margin-top:24px;padding:12px 20px;background:var(--ink);color:var(--paper);text-align:center}
+#panel-materials .materials-preview-button:active{transform:scale(.98)}
+#panel-materials input{accent-color:var(--ink)}
+#panel-materials .material-symbol-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#panel-materials .material-symbol-options label{min-width:0}
+#panel-materials .material-symbol-options span{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 4px;font-size:11px}
+#panel-materials .material-symbol-options svg{width:46px;height:36px}
+@media(max-width:900px){.materials-copy{padding:22px 24px}.materials h2{font-size:30px}.materials-description{font-size:14px}}
+@media(max-width:600px){
+ .materials{grid-template-columns:1fr;min-height:0;scroll-margin-top:64px}
+ .materials-photos{height:252px}
+ .materials-copy{min-height:294px;padding:28px 24px 34px}
+ .materials-mark{width:50px;height:38px;margin-bottom:10px}
+ .materials h2{font-size:30px;line-height:1.22}
+ .materials-description{font-size:14px;line-height:1.55;margin-top:18px;max-width:38ch}
+}
+
+.materials[data-type=italic] h2 span:last-child{font-style:italic}
+
+
+
+:root[data-density=triple] .materials{--material-scale:.76}
+.materials-description{line-height:1.55;margin-top:24px}
+
+/* Neutral textile relief; no source hue is mixed into the palette. */
+.materials-copy{position:relative;isolation:isolate;overflow:hidden}
+.materials-copy:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(media/linen-texture.jpg) center/cover no-repeat;filter:grayscale(1);mix-blend-mode:soft-light;opacity:.5}
+.materials[data-texture=terry] .materials-copy:before{background-image:url(media/texture-terry.jpg);background-size:580px auto;background-repeat:repeat}
+:root[data-palette=linen] .materials-copy:before{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.35) brightness(1.65);opacity:.3}
+.texture-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.texture-options label{display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid #0002;cursor:pointer}
+.texture-options label:has(input:checked){border-color:var(--ink);background:#00000007}
+.texture-options b{display:block;font-size:12px;font-weight:500}
+.texture-options small{display:block;font-size:10px;line-height:1.4;margin-top:4px;opacity:.65}
+
+:root[data-palette=linen] .materials[data-texture=terry] .materials-copy:before{opacity:.16}
+

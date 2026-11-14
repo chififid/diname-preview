@@ -1,12 +1,16 @@
 const root = document.documentElement;
 const storageKey = 'diname-homepage-study-v1';
-const defaults = { hero: 'armadillo', font: 'prata', palette: 'linen', video: 'limonta', language: 'ru', category: 'center', density: 'large', cardinfo: 'overlay', categorytext: 'normal', motion: true, sticky: true, heights: {cocoon:'full',frette:'compact',armadillo:'full'} };
+const defaults = { hero: 'armadillo', font: 'prata', palette: 'walnut', video: 'limonta', language: 'ru', category: 'center', density: 'triple', cardinfo: 'below', categorytext: 'normal', motion: true, sticky: true, heights: {cocoon:'full',frette:'compact',armadillo:'full'} };
 const presetRevision='approved-homepage-2026-11-13';
 let hasPreferredDefaults=false;
 let settings = { ...defaults, heights: {...defaults.heights} };
 try { const saved = JSON.parse(localStorage.getItem(storageKey)); hasPreferredDefaults=saved?.presetRevision===presetRevision; for (const key of ['hero','font','palette','video','category','language','density','cardinfo','categorytext']) { if ({hero:['cocoon','frette','armadillo'],font:['prata','forum','cormorant'],palette:['linen','walnut'],video:['frette','limonta'],category:['split','center'],language:['ru','en'],density:['large','triple'],cardinfo:['below','overlay'],categorytext:['normal','large']}[key].includes(saved?.[key])) settings[key] = saved[key]; } for(const hero of ['cocoon','frette','armadillo']){if(['full','compact'].includes(saved?.heights?.[hero]))settings.heights[hero]=saved.heights[hero];} if(typeof saved?.motion === 'boolean') settings.motion = saved.motion; if(typeof saved?.sticky === 'boolean') settings.sticky = saved.sticky; } catch {}
 // Apply the approved defaults once, preserving later comparison choices.
 if(!hasPreferredDefaults){for(const key of ['hero','video','language','category','density','cardinfo','categorytext','sticky'])settings[key]=defaults[key];settings.heights.armadillo='full';}
+// Adopt the new baseline once, then retain subsequent comparisons.
+try{if(JSON.parse(localStorage.getItem(storageKey))?.layoutRevision!=='compact-walnut-2026-11-14'){settings.density='triple';settings.palette='walnut';}}catch{}
+// Adopt captions below once; keep subsequent comparison choices.
+try{if(JSON.parse(localStorage.getItem(storageKey))?.captionRevision!=='below-v2')settings.cardinfo='below';}catch{settings.cardinfo='below';}
 // Each new visit opens the selected direction; alternatives remain available for comparison.
 settings.hero='armadillo';settings.heights.armadillo='full';
 const categories = [
@@ -23,6 +27,7 @@ categories.forEach((category,index)=>Object.assign(category,categoryEditorial[in
 categories[0].items.push(['Вафельное полотенце','Песочный · 70 × 140 см','2 100 ₽','third-bath.jpg']);
 categories[1].items.push(['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','third-kitchen.jpg']);
 categories[2].items.push(['Мягкий плед','Молочный · 140 × 200 см','7 200 ₽','third-bedroom.jpg']);
+// Keep original product photographs available for comparison.
 const products = [];
 document.querySelector('.collections').innerHTML = categories.map((c,i)=>`<section class="collection-row ${i%2?'reverse':''}" id="${c.id}" aria-labelledby="${c.id}-title"><article class="category"><div class="category-media"><img src="${c.photo}" alt="Текстиль в домашнем интерьере" loading="lazy" width="1000" height="1000"></div><div class="category-content"><h2 id="${c.id}-title">${c.heading.map(line=>`<span>${line}</span>`).join('')}</h2><div class="category-copy"><p class="category-description">${c.text}</p><button class="outline category-button" data-category="${c.id}">${c.action}</button></div></div></article>${c.items.map((item,itemIndex)=>{ const n=products.push({name:item[0],detail:item[1],price:item[2],image:'media/'+item[3],category:c.id})-1;return `<button class="product-card ${itemIndex===2?'third-product':''} ${item[4]?'has-detail':'zoom-detail'}" data-product="${n}" aria-label="${item[0]}, ${item[1]}"><span class="product-media"><img src="media/${item[3]}" alt="${item[0]}" width="800" height="1000" loading="lazy">${item[4]?`<img class="alternate" src="media/${item[4]}" alt="" width="800" height="1000" loading="lazy">`:''}</span><span class="product-info"><span><strong>${item[0]}</strong><small>${item[1]}</small></span><span class="price">${item[2]}</span></span></button>`;}).join('')}</section>`).join('');
 const translations = {
@@ -118,6 +123,7 @@ const categoryEnglish=[
 categoryEditorial.forEach((category,index)=>translations[category.text]=categoryEnglish[index]);
 Object.assign(translations,{'Прилипание карточек при прокрутке':'Sticky product cards'});
 Object.assign(translations,{'Основной':'Preferred','Prata, Forum и Cormorant — варианты для сравнения.':'Prata, Forum and Cormorant — options to compare.'});
+Object.assign(translations,{'Плотность сайта':'Site density','Просторный':'Spacious','Компактный: три товара и короткий блок материалов. Просторный: два товара и высокий блок материалов. Высота первого экрана выбирается отдельно.':'Compact: three products and a shorter materials section. Spacious: two products and a taller materials section. Hero height is set separately.'});
 function t(text){return settings.language==='en'?(translations[text]||text):text;}
 // Keep original text nodes so switching languages never destroys controls or icons.
 const localizedNodes=[];
@@ -161,13 +167,13 @@ function applyLanguage(){
  document.querySelector('.hero-actions a').textContent=copy.cta;
  document.querySelector('.hero-note').textContent=copy.note;
  const categoryCopy = settings.language==='en' ? [
-  ['A soft towel after a shower, your favourite robe and a little time to yourself. Textiles for your everyday rituals.','Soft towels and light robes in quiet natural shades. For slow mornings, warm showers and restful evenings at home. Made for every day. Find the texture you love.'],
-  ['Slow breakfasts and dinners around the table. Simple things that bring a little warmth to every day.','Textured linens in warm natural shades. For breakfasts by the window, family lunches and long evenings around the table. Warmth in every detail. Mix colours to suit your mood.'],
-  ['Wrap yourself in a throw, put things aside and stay home. Quiet colours and textures you want to reach for.','Soft throws, comforting textures and quiet colours. For evenings with a book and cosy weekends with nowhere to rush. Settle into comfort. Make home your favourite place.']
+  ['A soft towel after a shower, your favourite robe and a little time to yourself. Textiles for your everyday rituals.','Soft towels and light robes in quiet natural shades. For slow mornings, warm showers and restful evenings at home. Find the texture you love.'],
+  ['Slow breakfasts and dinners around the table. Simple things that bring a little warmth to every day.','Textured linens in warm natural shades. For breakfasts by the window, family lunches and long evenings around the table. Mix colours to suit your mood.'],
+  ['Wrap yourself in a throw, put things aside and stay home. Quiet colours and textures you want to reach for.','Soft throws, comforting textures and quiet colours. For evenings with a book and cosy weekends with nowhere to rush. Make home your favourite place.']
  ] : [
-  ['Мягкое полотенце после душа, любимый халат и немного времени для себя. Текстиль для ваших ежедневных ритуалов.','Мягкие полотенца и лёгкие халаты в природных оттенках. Для неспешного утра, тёплого душа и тихого вечера дома. На каждый день. Выбирайте свою любимую фактуру.'],
-  ['Неторопливый завтрак и ужин за общим столом. Простые вещи, которые делают каждый день немного теплее.','Фактурный текстиль в природных оттенках. Для завтраков у окна, семейных обедов и долгих встреч за общим столом. С теплом к деталям. Сочетайте оттенки по настроению.'],
-  ['Укутаться в плед, отложить дела и остаться дома. Спокойные оттенки и фактуры, к которым хочется прикасаться.','Мягкие пледы, приятные фактуры и спокойные оттенки. Для вечеров с книгой и уютных выходных, когда некуда спешить. Отдыхайте с уютом. Пусть дома будет по-настоящему хорошо.']
+  ['Мягкое полотенце после душа, любимый халат и немного времени для себя. Текстиль для ваших ежедневных ритуалов.','Мягкие полотенца и лёгкие халаты в природных оттенках. Для неспешного утра, тёплого душа и тихого вечера дома. Выбирайте свою любимую фактуру.'],
+  ['Неторопливый завтрак и ужин за общим столом. Простые вещи, которые делают каждый день немного теплее.','Фактурный текстиль в природных оттенках. Для завтраков у окна, семейных обедов и долгих встреч за общим столом. Сочетайте оттенки по настроению.'],
+  ['Укутаться в плед, отложить дела и остаться дома. Спокойные оттенки и фактуры, к которым хочется прикасаться.','Мягкие пледы, приятные фактуры и спокойные оттенки. Для вечеров с книгой и уютных выходных, когда некуда спешить. Пусть дома будет по-настоящему хорошо.']
  ];
  categories.forEach((category,index)=>{
   const section=document.getElementById(category.id), heading=section.querySelector('h2');
@@ -306,7 +312,7 @@ function applySettings(){
  applyLanguage();
  document.querySelector('#motion').checked=settings.motion;
  document.querySelector('#sticky-products').checked=settings.sticky;
- try{localStorage.setItem(storageKey,JSON.stringify({...settings,presetRevision}));}catch{}
+ try{localStorage.setItem(storageKey,JSON.stringify({...settings,presetRevision,layoutRevision:'compact-walnut-2026-11-14',captionRevision:'below-v2'}));}catch{}
  const nextVideo=settings.video==='limonta'?'media/limonta-hero.mov':'media/frette-hero.mp4';
  if(video.getAttribute('src')!==nextVideo){
   resetVideoBlend();
@@ -351,3 +357,44 @@ settingsTabs.forEach((tab,index)=>{
   event.preventDefault();selectSettingsTab(settingsTabs[next]);settingsTabs[next].focus();
  });
 });
+
+// Prototype-only colour control: transparent Bath assets keep their own lighting.
+// Image-only composition study: original labels and category layouts stay intact.
+const photoStudyKey='diname-photo-study-v2';
+function setPhotoStudy(mode){
+ if(!['original','all'].includes(mode))mode='all';
+ document.querySelector(`input[name="photo-study"][value="${mode}"]`).checked=true;
+ categories.forEach((category)=>{
+  const row=document.getElementById(category.id),active=mode==='all';
+  row.classList.toggle('studio-study',active);
+  if(category.id==='kitchen')row.querySelector('.category-media img').src=active?'media/kitchen-editorial.jpg':category.photo;
+  row.querySelectorAll('.product-card').forEach((card,i)=>{
+   const item=category.items[i],src='media/'+(active?`${category.id}-studio-${i+1}.png`:item[3]);
+   card.querySelector('.product-media img').src=src;
+   const alternate=card.querySelector('.alternate');if(alternate)alternate.hidden=active;
+   card.classList.toggle('has-detail',!active&&!!item[4]);
+   products[Number(card.dataset.product)].image=src;
+  });
+ });
+ try{localStorage.setItem(photoStudyKey,mode)}catch{}
+}
+let photoStudy='all';try{photoStudy=localStorage.getItem(photoStudyKey)||'all'}catch{}
+setPhotoStudy(photoStudy);
+document.querySelectorAll('input[name="photo-study"]').forEach(input=>input.addEventListener('change',()=>setPhotoStudy(input.value)));
+document.querySelector('#reset').addEventListener('click',()=>setPhotoStudy('all'));
+
+// Each palette remembers its own coordinated colour arrangement.
+const combinationKey='diname-palette-combinations-v2';
+let combinations={linen:'1',walnut:'1'};
+try{const saved=JSON.parse(localStorage.getItem(combinationKey));for(const palette of ['linen','walnut'])if(['1','2'].includes(saved?.[palette]))combinations[palette]=saved[palette]}catch{}
+function renderCombinations(){
+ root.dataset.colourway=combinations[root.dataset.palette]||'1';
+ document.querySelectorAll('[data-colourway-button]').forEach(button=>button.setAttribute('aria-pressed',String(root.dataset.palette===button.dataset.forPalette&&combinations[button.dataset.forPalette]===button.dataset.colourwayButton)));
+}
+document.querySelectorAll('[data-colourway-button]').forEach(button=>button.addEventListener('click',()=>{
+ settings.palette=button.dataset.forPalette;combinations[settings.palette]=button.dataset.colourwayButton;
+ applySettings();renderCombinations();try{localStorage.setItem(combinationKey,JSON.stringify(combinations))}catch{}
+}));
+new MutationObserver(renderCombinations).observe(root,{attributes:true,attributeFilter:['data-palette']});
+document.querySelector('#reset').addEventListener('click',()=>{combinations={linen:'1',walnut:'1'};try{localStorage.removeItem(combinationKey)}catch{}renderCombinations()});
+renderCombinations();

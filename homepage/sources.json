@@ -104,5 +104,151 @@
     "file": "media/third-bedroom.jpg",
     "local_source": "design/photos/assets/once-03.jpg",
     "note": "Временный пример для варианта с тремя товарами"
+  },
+  {
+    "file": "media/materials-stack.jpg",
+    "url": "https://delecuona.com/cdn/shop/files/deLeCuona-FabricPile-_CHAT-TTN1-PHA3-BEE3-BAN2-Lifestyle14-1x11.jpg?v=1788424777&width=1600",
+    "page": "https://delecuona.com/products/titian-chalk",
+    "use": "Temporary composition reference, not DINAME products; study added 2026-11-14"
+  },
+  {
+    "file": "media/frette-heritage.mov",
+    "url": "https://eu.frette.com/on/demandware.static/-/Library-Sites-FretteSharedLibrary/default/dw6b7b9ecc/images/fretteus/heritage/frette-video-short.mov",
+    "note": "Frette Heritage Video: temporary production reference, not DINAME footage."
+  },
+  {
+    "file": "media/bath-studio-1.png",
+    "source": "Generated with built-in image_gen",
+    "note": "Bath catalog composition study, not confirmed DINAME products. Prompts: media/generated-prompts.json"
+  },
+  {
+    "file": "media/bath-studio-2.png",
+    "source": "Generated with built-in image_gen",
+    "note": "Bath catalog composition study, not confirmed DINAME products. Prompts: media/generated-prompts.json"
+  },
+  {
+    "file": "media/bath-studio-3.png",
+    "source": "Generated with built-in image_gen",
+    "note": "Bath catalog composition study, not confirmed DINAME products. Prompts: media/generated-prompts.json"
+  },
+  {
+    "file": "media/linen-texture.jpg",
+    "source": "Generated with built-in image_gen",
+    "note": "Static linen texture overlay. Prompt: media/generated-prompts.json"
+  },
+  {
+    "file": "media/texture-cotton-jersey.jpg",
+    "url": "https://polyhaven.com/a/cotton_jersey",
+    "license": "CC0",
+    "authors": "colormass (photography), Rico Cilliers (processing)"
+  },
+  {
+    "file": "media/kitchen-studio-1.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/kitchen-studio-2.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/kitchen-studio-3.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/bedroom-studio-1.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/bedroom-studio-2.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/bedroom-studio-3.png",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/kitchen-editorial.jpg",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/texture-terry.jpg",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "file": "media/texture-waffle.jpg",
+    "source": "Built-in image_gen",
+    "prompts": "media/generated-prompts.json",
+    "purpose": "Prototype concept photography / texture"
+  },
+  {
+    "section": "events-studies-v2",
+    "reference": "https://www.benirugs.com/",
+    "photos": [
+      {
+        "local": "media/beni-event-1.jpg",
+        "url": "https://cdn.sanity.io/images/vgnnbka2/production/a7068fad24a02a6dbbc3f07598af1b6749dcae83-4480x6720.jpg"
+      },
+      {
+        "local": "media/beni-event-2.jpg",
+        "url": "https://cdn.sanity.io/images/vgnnbka2/production/0679ddab219e8bef7038862f3a98240d4755d627-6617x4411.jpg"
+      },
+      {
+        "local": "media/beni-event-3.jpg",
+        "url": "https://cdn.sanity.io/images/vgnnbka2/production/8452cf32487f9aa558e8581565dfb85d322bdf9f-1024x1365.jpg"
+      },
+      {
+        "local": "media/beni-event-4.jpg",
+        "url": "https://cdn.sanity.io/images/vgnnbka2/production/e2a12e76f666f03867ea469c414aca3894253520-2000x2000.jpg"
+      },
+      {
+        "local": "media/beni-event-5.jpg",
+        "url": "https://cdn.sanity.io/images/vgnnbka2/production/11bc6570ca4355d23c2df3ad279c0e04612ac731-6087x8116.jpg"
+      }
+    ],
+    "note": "Five fictional event examples. Warm textile imagery from existing project assets; only the Tashkent BENI interior remains in use. Colours and typography follow the selected DINAME palette and font.",
+    "active_images": [
+      "media/events-exhibition.jpg",
+      "media/beni-event-2.jpg",
+      "media/events-meeting.jpg",
+      "media/kitchen-editorial.jpg",
+      "media/third-bedroom.jpg"
+    ]
+  },
+  {
+    "section": "wholesale-footer",
+    "image": "media/wholesale-studio.jpg",
+    "type": "generated concept photo",
+    "references": [
+      "https://www.for-living.it/",
+      "https://delecuona.com/",
+      "https://eu.frette.com/en_IT/homepage/"
+    ],
+    "brief": "Client voice reply 12 Nov: towels, robes, throws together in one scene. Form: company, name, phone, email, message. Submission not connected; footer contact uses public Telegram. Policy pages are prototype placeholders."
+  },
+  {
+    "section": "footer-armadillo-study",
+    "reference": "User-supplied Armadillo footer screenshot, 2026-11-14",
+    "contacts_source": "https://greatkokand.uz/ru/",
+    "phone": "+998 91 155 01 00",
+    "email": "adp777@mail.ru",
+    "contact_status": "Временно из старого сайта производства; актуальность для DINAME требует подтверждения.",
+    "social": "https://t.me/dinameuz",
+    "pages_status": "Сервисные и юридические страницы — черновые пункты, без утверждённых условий."
   }
 ]

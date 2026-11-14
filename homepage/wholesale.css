@@ -1,0 +1,56 @@
+.wholesale{position:relative;isolation:isolate;display:grid;place-items:center;height:clamp(440px,33.333vw,680px);min-height:0;color:var(--ink);background:#e9dfd0;overflow:hidden}
+.wholesale-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
+.wholesale::before{content:"";position:absolute;inset:0;z-index:-1;background:transparent;pointer-events:none}
+.wholesale-copy{text-align:center;max-width:580px;width:38%;padding:0 16px;position:relative}
+.wholesale-eyebrow{font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin:0 0 18px}
+.wholesale h2{font:400 clamp(28px,2.1vw,38px)/1.2 var(--display);letter-spacing:-.025em;margin:0 0 16px;text-wrap:balance}
+.wholesale-description{font-size:14px;line-height:1.65;margin:0 0 24px;text-wrap:pretty}
+.wholesale-button{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);background:var(--ink);color:var(--paper);min-height:46px;padding:13px 24px;font-size:12px;line-height:1.5;border-radius:0}
+.wholesale-button:active{transform:translateY(1px)}
+.wholesale .wholesale-button{background:transparent;border-color:currentColor;color:inherit;min-width:164px;transition:background-color .2s ease,color .2s ease}
+@media(hover:hover){.wholesale .wholesale-button:hover{background:#fff;border-color:#fff;color:#463527}}
+.wholesale .wholesale-button:focus-visible{background:#fff;border-color:#fff;color:#463527}
+[data-density=large] .wholesale{height:clamp(500px,37vw,740px)}
+.wholesale[data-composition=warm]{color:#fff;background:#76503a}
+.wholesale[data-composition=warm]::before{background:rgba(35,23,15,.12)}
+.wholesale-engraving{display:none;position:relative;width:clamp(190px,14vw,260px);aspect-ratio:1328/438;margin:0 auto 24px;filter:drop-shadow(0 1px 0 rgba(255,255,255,.85)) drop-shadow(0 -1px .6px rgba(66,44,24,.45))}
+.wholesale-engraving::before{content:"";position:absolute;inset:0;background:rgba(94,73,47,.4);mask:url('media/wordmark.svg') center/contain no-repeat;-webkit-mask:url('media/wordmark.svg') center/contain no-repeat}
+.wholesale[data-composition=engraved] .wholesale-engraving{display:block}
+.wholesale[data-composition=engraved] h2{font-size:clamp(28px,1.8vw,34px)}
+.wholesale[data-composition=flatlay],[data-density=large] .wholesale[data-composition=flatlay]{height:clamp(550px,42vw,800px)}
+.wholesale[data-composition=flatlay] .wholesale-copy{max-width:460px}
+.wholesale[data-composition=flatlay] h2{font-size:clamp(26px,1.8vw,34px);max-width:12em;margin-left:auto;margin-right:auto}
+.wholesale[data-composition=flatlay]::before{background:rgba(250,246,238,.08)}
+.settings-tabs{overflow-x:auto;gap:18px}
+.wholesale-dialog{width:640px;max-width:calc(100vw - 32px);max-height:90dvh;overflow-y:auto;border:0;background:var(--paper);color:var(--ink);padding:46px}
+.wholesale-dialog h2{font:400 32px/1.2 var(--display);letter-spacing:-.025em;margin-bottom:18px}.wholesale-dialog .form-intro{font-size:13px;line-height:1.6;max-width:430px;margin-bottom:24px;color:var(--muted)}
+.wholesale-fields{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}.wholesale-fields label{display:flex;flex-direction:column;gap:7px;font-size:12px}.wholesale-fields .field-wide{grid-column:1/-1}
+.wholesale-fields input,.wholesale-fields textarea{width:100%;min-width:0;border:0;border-bottom:1px solid var(--muted);border-radius:0;padding:8px 0;background:transparent;color:var(--ink);font:14px/1.5 Manrope,Arial,sans-serif}.wholesale-fields textarea{resize:vertical;min-height:70px}.wholesale-fields textarea:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.form-prototype{font-size:11px;line-height:1.6;margin:22px 0;color:var(--muted)}#wholesale-form-status{font-size:13px;line-height:1.6;margin-top:20px;padding-top:18px;border-top:1px solid var(--panel)}
+
+@media(max-width:900px){.wholesale-copy{width:47%}.wholesale h2{font-size:28px}.wholesale-description{font-size:13px}}
+@media(max-width:600px){.wholesale,[data-density=large] .wholesale,.wholesale[data-composition=flatlay],[data-density=large] .wholesale[data-composition=flatlay]{height:auto;display:flex;flex-direction:column;min-height:0;background:var(--paper);color:var(--ink)}.wholesale-scene{position:relative;width:100%;height:auto;z-index:-2}.wholesale-copy{width:100%;padding:32px 24px 40px;max-width:none}.wholesale h2{font-size:28px;margin-bottom:14px}.wholesale-engraving{width:170px;margin-bottom:20px}.wholesale[data-composition=warm]::before{background:transparent}.wholesale-dialog{padding:40px 24px}.wholesale-fields{grid-template-columns:1fr;gap:18px}.wholesale-dialog h2{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.wholesale .wholesale-button{transition:none}}
+
+/* Broader, quieter wholesale composition. */
+.wholesale[data-composition=flatlay]{height:clamp(480px,36vw,680px);color:#211e19}
+[data-density=large] .wholesale[data-composition=flatlay]{height:clamp(550px,40vw,760px)}
+.wholesale[data-composition=flatlay] .wholesale-copy{width:58%;max-width:760px;padding:0 24px}
+.wholesale[data-composition=flatlay] h2{font-size:clamp(32px,2.65vw,48px);max-width:16em;margin:0 auto 24px}
+.wholesale[data-composition=flatlay] .wholesale-description{font-size:16px;line-height:1.65;max-width:560px;margin:0 auto 28px;text-wrap:balance}
+.wholesale[data-composition=flatlay]::before{background:radial-gradient(ellipse at center,rgba(250,247,240,.48),rgba(250,247,240,.14) 52%,transparent 75%)}
+.wholesale[data-composition=flatlay] .wholesale-button{min-width:240px;font-size:13px;padding:14px 28px}
+@media(hover:hover){.wholesale .wholesale-button:hover{background:rgb(255,255,255);opacity:1;color:#211e19}}
+@media(max-width:600px){.wholesale[data-composition=flatlay],[data-density=large] .wholesale[data-composition=flatlay]{height:auto}.wholesale[data-composition=flatlay] .wholesale-copy{width:100%;padding:32px 24px 40px}.wholesale[data-composition=flatlay] h2{font-size:30px}.wholesale[data-composition=flatlay] .wholesale-description{font-size:14px}}
+
+/* Two copy treatments on the single approved textile photograph. */
+.wholesale[data-composition=flatlay] h2{font-size:clamp(30px,2.5vw,40px);line-height:1.2;margin-bottom:16px}
+.wholesale[data-composition=flatlay] .wholesale-description{margin-bottom:18px}
+.wholesale[data-presentation=minimal] h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wholesale[data-presentation=minimal] .wholesale-description{font-size:clamp(16px,1.15vw,20px);max-width:620px;line-height:1.65}
+@media(max-width:600px){.wholesale[data-composition=flatlay] h2{font-size:30px}.wholesale[data-presentation=minimal] .wholesale-description{font-size:16px}}
+
+.wholesale .wholesale-button{transition:background-color 240ms ease,color 240ms ease,border-color 240ms ease}
+@media(hover:hover){.wholesale .wholesale-button:hover{background:#302b27;border-color:#302b27;color:#fff;opacity:1}}
+.wholesale .wholesale-button:focus-visible{background:#302b27;border-color:#302b27;color:#fff}
+@media(prefers-reduced-motion:reduce){.wholesale .wholesale-button{transition:none}}

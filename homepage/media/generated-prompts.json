@@ -1,0 +1,85 @@
+{
+  "tool": "Built-in image_gen",
+  "bath": [
+    "Use case: product-mockup. Asset type: isolated ecommerce textile photo for a coordinated three-item catalog series. Single bath towel hanging vertically, neatly folded lengthwise over an invisible support, frontal camera exactly perpendicular, no visible rod or hanger. Centered full silhouette, equal generous empty margins, entire towel occupies 56 percent of image width and 76 percent height, lower hem fully visible, modest natural folds. Portrait 2:3 composition. Photoreal cotton fibers, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no floor, no wall, no props, no text, no logo, no watermark, no cast shadow beyond the object. Consistent premium studio catalog styling, restrained realistic drape. Subject: warm sand beige plush terry cotton towel, subtle flat woven border near bottom, straight hem.",
+    "Use case: product-mockup. Asset type: isolated ecommerce textile photo for a coordinated three-item catalog series. Single bath towel hanging vertically, neatly folded lengthwise over an invisible support, frontal camera exactly perpendicular, no visible rod or hanger. Centered full silhouette, equal generous empty margins, entire towel occupies 56 percent of image width and 76 percent height, lower hem fully visible, modest natural folds. Portrait 2:3 composition. Photoreal cotton fibers, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no floor, no wall, no props, no text, no logo, no watermark, no cast shadow beyond the object. Consistent premium studio catalog styling, restrained realistic drape. Subject: milk ivory cotton waffle weave bath towel, fine square honeycomb texture, straight finished hem, no fringe.",
+    "Use case: product-mockup. Asset type: isolated ecommerce textile photo for a coordinated three-item catalog series. Single bath towel hanging vertically, neatly folded lengthwise over an invisible support, frontal camera exactly perpendicular, no visible rod or hanger. Centered full silhouette, equal generous empty margins, entire towel occupies 56 percent of image width and 76 percent height, lower hem fully visible, modest natural folds. Portrait 2:3 composition. Photoreal cotton fibers, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no floor, no wall, no props, no text, no logo, no watermark, no cast shadow beyond the object. Consistent premium studio catalog styling, restrained realistic drape. Subject: muted oatmeal taupe cotton waffle weave bath towel, fine square honeycomb texture, straight finished hem, no fringe."
+  ],
+  "texture": "Use case: photorealistic-natural. Asset type: subtle textile background overlay for a luxury home linen website. A straight-on macro photograph of natural fine linen fabric filling the entire frame edge to edge, neutral medium gray monochrome, tiny irregular woven fibers visible, softly lit from upper left, very low contrast, with just one broad shallow diagonal impression or gently pressed crease near the far left edge fading out before the center. Center and right are calm almost flat fine weave, suitable behind readable text. No objects, no towels, no seams, no knots, no text, no vignette, no dramatic shadows, no gradients. Landscape 3:2 composition. Understated real tactile fabric not a regular digital grid.",
+  "coordinated_collections": [
+    {
+      "key": "kitchen1",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-ea07679d-19d3-4e6f-b972-e0ef64b7064a.png",
+      "prompt": "Use case: product-mockup. Single flax taupe linen kitchen tea towel, folded lengthwise hanging from invisible support, frontal perpendicular studio camera, neat narrow rectangular silhouette with realistic fine linen weave and restrained natural folds, straight hem. Coordinated luxury home-textile catalog. Portrait 2:3 composition: centered object occupies 56% width and 76% height, full silhouette with generous empty margins. Soft diffuse upper-left illumination, neutral white balance. Truly transparent background, no wall, floor, props, rod, text, branding, watermark or shadow outside object.",
+      "saved": "docs/homepage/media/kitchen-studio-1.png"
+    },
+    {
+      "key": "kitchen2",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-f9c23062-1d5c-4fe3-a097-753dd466d933.png",
+      "prompt": "Use case: product-mockup. Isolated ecommerce textile photograph, frontal perpendicular camera, single object neatly folded lengthwise over invisible support hanging vertically. Entire silhouette centered occupies 56% width and 76% height, generous empty margins. Portrait 2:3. Realistic fabric, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no wall, floor, rod, hanger, props, text, logo, watermark, or shadow outside object. Same restrained luxury catalog series. Subject: milk ivory linen kitchen tea towel, fine plain weave, narrow straight hem, a few small natural folds",
+      "saved": "docs/homepage/media/kitchen-studio-2.png"
+    },
+    {
+      "key": "kitchen3",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-a5e0b726-4a51-4644-9b22-7b082f9dcc18.png",
+      "prompt": "Use case: product-mockup. Isolated ecommerce textile photograph, frontal perpendicular camera, single object neatly folded lengthwise over invisible support hanging vertically. Entire silhouette centered occupies 56% width and 76% height, generous empty margins. Portrait 2:3. Realistic fabric, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no wall, floor, rod, hanger, props, text, logo, watermark, or shadow outside object. Same restrained luxury catalog series. Subject: natural oatmeal kitchen tea towel with subtle woven taupe narrow parallel border stripes near its straight lower hem, fine linen cotton weave",
+      "saved": "docs/homepage/media/kitchen-studio-3.png"
+    },
+    {
+      "key": "bedroom1",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-5612bda6-4fa3-48ac-a695-e1f89ea7bede.png",
+      "prompt": "Use case: product-mockup. Isolated ecommerce textile photograph, frontal perpendicular camera, single object neatly folded lengthwise over invisible support hanging vertically. Entire silhouette centered occupies 56% width and 76% height, generous empty margins. Portrait 2:3. Realistic fabric, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no wall, floor, rod, hanger, props, text, logo, watermark, or shadow outside object. Same restrained luxury catalog series. Subject: warm sand beige woven throw blanket, folded to a neat broad long rectangle, dense soft small herringbone weave, short refined fringe at bottom",
+      "saved": "docs/homepage/media/bedroom-studio-1.png"
+    },
+    {
+      "key": "bedroom2",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-35dec94e-3c82-45b3-b43a-00f100949805.png",
+      "prompt": "Use case: product-mockup. Isolated ecommerce textile photograph, frontal perpendicular camera, single object neatly folded lengthwise over invisible support hanging vertically. Entire silhouette centered occupies 56% width and 76% height, generous empty margins. Portrait 2:3. Realistic fabric, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no wall, floor, rod, hanger, props, text, logo, watermark, or shadow outside object. Same restrained luxury catalog series. Subject: muted caramel brown wool cotton throw blanket, folded to neat broad long rectangle, soft brushed fine weave, short refined fringe at bottom",
+      "saved": "docs/homepage/media/bedroom-studio-2.png"
+    },
+    {
+      "key": "bedroom3",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-66ed4177-6364-47ad-8f41-019ff3645cd0.png",
+      "prompt": "Use case: product-mockup. Isolated ecommerce textile photograph, frontal perpendicular camera, single object neatly folded lengthwise over invisible support hanging vertically. Entire silhouette centered occupies 56% width and 76% height, generous empty margins. Portrait 2:3. Realistic fabric, soft diffuse upper-left studio lighting, neutral white balance. Truly transparent background, no wall, floor, rod, hanger, props, text, logo, watermark, or shadow outside object. Same restrained luxury catalog series. Subject: milk ivory cotton throw blanket, folded to neat broad long rectangle, subtle fine basket weave, short refined fringe at bottom",
+      "saved": "docs/homepage/media/bedroom-studio-3.png"
+    },
+    {
+      "key": "kitchenScene",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-c7ea3521-6c64-4233-9505-c39272800b16.png",
+      "prompt": "Use case: photorealistic-natural. Editorial photograph for a refined home textiles kitchen collection, square composition. Close intimate view of a warm walnut kitchen table next to an old cream plaster wall and soft side window light. A beautiful natural flax kitchen tea towel draped over the near table edge, an ivory linen napkin casually folded next to a small unglazed ceramic bowl and wooden spoon. Textiles occupy most of the composition and are the clear subject, authentic fine fabric detail. Quiet warm sand, ivory, walnut palette, calm lived-in European interior, understated premium analog photographic mood, no people, no text, no logos, no glossy artificial CGI. Leave upper central wall calm for a white website heading, with sufficient middle-tone contrast. Avoid clutter, plants, extra dishes.",
+      "saved": "docs/homepage/media/kitchen-editorial.jpg"
+    },
+    {
+      "key": "textureTerry",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-fc07d1e9-7fea-4c09-996c-7475c5492a11.png",
+      "prompt": "Use case: photorealistic-natural. Flat orthographic macro photograph of fine cotton terry loops, entire frame filled continuously with the same textile surface, absolutely no object boundaries, hems, seams, folds, towel silhouette or background. Fine small irregular loops evenly distributed, about 100 loops across image width. Monochrome neutral middle gray, no beige tint. Gentle uniform grazing studio illumination reveals tiny tactile relief with low contrast. Seamless-looking continuous textile surface for a website background overlay. Landscape 3:2. No vignette, no gradient, no large wrinkles or objects, no text.",
+      "saved": "docs/homepage/media/texture-terry.jpg"
+    },
+    {
+      "key": "textureWaffle",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-36cd12ac-c821-4b69-b547-1718bc0b9472.png",
+      "prompt": "Use case: photorealistic-natural. Flat orthographic photograph of fine cotton waffle weave fabric, entire frame filled continuously by textile without any boundaries, seams, hems, fringe, folds or backdrop. Small refined square woven cells, roughly 65 cells across image width, delicate natural cotton threads. Monochrome neutral middle gray, no beige or brown tint. Uniform softly grazing light, low contrast with tiny relief; suitable as quiet background texture behind text. Landscape 3:2. No large squares, no gradients, no vignette, no shadows, no text.",
+      "saved": "docs/homepage/media/texture-waffle.jpg"
+    }
+  ],
+  "events": [
+    {
+      "key": "eventsExhibition",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-57e31a0d-519d-4781-9a6a-2bc399d68f1d.png",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 editorial photograph of a beautifully designed home-textile exhibition stand at a trade fair. Restrained warm ivory and walnut architecture, shelves of neatly folded sand, ivory and taupe bath towels and woven throws, samples hanging from simple oak rails, one low display table with textiles. View from aisle looking into stand, wider context visible, high ceiling subtly out of focus. Authentic professional exhibition photography, inviting soft light, tactile real fabric, no people in foreground, no readable text, no logos, no signs, no watermark. Refined but believable display, not a residential living room. Warm muted natural colors, no flashy booth lighting.",
+      "saved": "docs/homepage/media/events-exhibition.jpg"
+    },
+    {
+      "key": "eventsMeeting",
+      "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-fe39f2cc-ae78-4872-9d1e-bfaeae30fdaa.png",
+      "prompt": "Use case: photorealistic-natural. Landscape 3:2 editorial photograph of a home textile collection presentation in a warm quiet showroom. Close view of a broad walnut worktable with carefully arranged overlapping large linen swatches, sand and ivory folded terry towels, warm caramel woven throw. One person's forearm in cream shirt gently touching a textile sample, face outside frame. Soft daylight, cream walls, neatly hung textile samples in background. Real professional tactile photography, intimate and calm, plausible meeting with a buyer, no text, no labels, no logos, no watermark, not a flat lay or collage. Warm ivory walnut muted palette.",
+      "saved": "docs/homepage/media/events-meeting.jpg"
+    }
+  ],
+  "wholesale": {
+    "key": "wholesale-studio",
+    "prompt": "Photorealistic luxury home textile still life for a wide panoramic website banner, aspect ratio 2.6:1. One cohesive studio scene, quiet architectural styling, refined and believable editorial photography, warm ivory limestone wall and walnut accents. Multiple product categories arranged together: at far left an ivory cotton bathrobe hanging naturally on a dark wooden peg rail, below it two stacks of thick cream and oatmeal terry towels on a low walnut bench; at far right a caramel woven throw draped over a low stone plinth, folded linen kitchen towels and one pale cushion. Objects occupy the outer left 28 percent and outer right 28 percent and the bottom corners, all visible in wide shot. CENTRAL 40 PERCENT OF FRAME is a broad clear warm pale limestone surface with delicate tactile grain, empty negative space for website heading and button, no objects in center. Above the center at approximately 24 percent of frame height a very small elegant abstract loose thread loop carved subtly into the stone, same stone colour with fine recessed shadows, organic two-loop gesture, NOT a letter, NOT a logo. Afternoon side light from left, soft shadows, tactile cotton loops and linen fibres, muted ivory sand walnut palette, natural material irregularity, no people, no plants, no luxury gold accents. View camera straight-on slightly above the low benches; no text, no labels, no watermark, no lettering. The composition must work when displayed as a low wide banner: textiles remain visible along left and right margins while the central wall is quiet and light.",
+    "path": "/Users/chififid/.codex/generated_images/01a1d9ec-7c23-7c51-9613-de2b4f40506a/exec-8c306983-2784-4dfd-acc0-6cd5e0b6e0f3.png",
+    "saved": "docs/homepage/media/wholesale-studio.jpg"
+  }
+}

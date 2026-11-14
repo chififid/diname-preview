@@ -363,3 +363,43 @@ button,a[href],.outline,.choice,.motion-choice,.options label,.settings-tabs but
 .options .recommended{display:flex;flex-direction:column;gap:5px}
 .options .recommended>.preferred-tag{text-align:center}
 .motion-choice>.preferred-tag{margin-left:auto}
+
+/* Transparent over the hero; opaque on scroll, with a clearer divider. */
+.header{background:transparent;color:#fff;border-bottom:1px solid rgb(255 255 255 / 35%);backdrop-filter:none;-webkit-backdrop-filter:none}
+.header.solid{background:var(--paper);color:var(--ink);border-bottom-color:color-mix(in srgb,var(--ink) 28%,var(--paper));backdrop-filter:none;-webkit-backdrop-filter:none}
+.header .brand{mix-blend-mode:normal}
+
+/* Shared text rhythm for the compact baseline, without changing compositions. */
+[data-category=center] .collections .category-description,[data-category=center][data-categorytext=large] .collections .category-description{line-height:1.4}
+.collections .category-copy{gap:24px}
+
+/* Bath study changes only the photograph, preserving both caption layouts. */
+.studio-study .product-media{background:var(--photo-surface)}
+.studio-study .product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;transform:scale(1.02);filter:none}
+.studio-study .product-card:hover .product-media img{transform:scale(1.02)}
+
+
+
+.studio-study .product-media img.alternate{display:none}
+
+/* Same approved colour placement; two strengths for secondary accents. */
+:root{--header-surface:#f6f2eb;--collection-surface:#f8f5ee;--photo-surface:#f2ede5;--material-surface:#5d4032;--material-text:#fffaf2}
+:root[data-palette=linen]{--paper:#faf8f2;--panel:#e5dfd2;--ink:#38332b;--muted:#776652;--header-surface:#f6f3eb;--collection-surface:#f8f6ef;--photo-surface:#f1eee4;--material-surface:#e9e2d4;--material-text:#38332b}
+:root[data-palette=linen][data-colourway="2"]{--header-surface:#f0ede3;--photo-surface:#eae5d9}
+:root[data-palette=walnut]{--header-surface:#f6f2eb;--collection-surface:#f8f5ee;--photo-surface:#f2ede5;--material-surface:#5d4032;--material-text:#fffaf2}
+:root[data-palette=walnut][data-colourway="2"]{--header-surface:#f3eee5;--photo-surface:#ece5dc}
+.header.solid{background:var(--header-surface)}
+.collections{background:var(--collection-surface)}
+.palette-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.palette-row .choice{flex:1;font-size:12px;gap:8px}
+.palette-combinations{display:flex;gap:5px}
+.palette-combinations button{width:32px;height:36px;border:1px solid var(--panel);font-size:12px}
+.palette-combinations button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+@media(max-width:400px){.palette-row .swatch{display:none}.palette-combinations button{width:28px}}
+
+/* Shared spacing rhythm and equal visual gaps in header navigation. */
+:root{--section-space:72px;--copy-gap:24px;--nav-space:24px}
+.header .nav-left{gap:var(--nav-space)}
+.header .nav-right{gap:4px}
+.header .icon{width:44px;min-width:44px}
+@media(max-width:600px){:root{--section-space:48px;--nav-space:16px}.header .nav-right{gap:0}.header .icon{width:40px;min-width:40px}}
