@@ -1,0 +1,64 @@
+/* Shared capped canvas. Background media and divider shells remain full-bleed. */
+:root{
+ --page-max:120rem;
+ --layout-unit:min(1vw,calc(var(--page-max) / 100));
+ --page-inset:3rem;
+ --space-half:calc(var(--page-inset) / 2);
+ --content-inset:var(--page-inset);
+}
+.page-container{width:100%;max-width:var(--page-max);margin-inline:auto;box-sizing:border-box}
+.header,.header.solid{padding-inline:0}
+.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:var(--page-inset)}
+.hero .hero-content{padding-inline:var(--page-inset)}
+/* Outer frame + inner card inset = the shared text edge. */
+.collections,[data-density=triple] .collections{--gap:var(--space-half);padding:var(--space-half)}
+.category-content,[data-density=triple] .category-content,[data-category=split] .category-content{padding:var(--space-half)}
+/* Full-bleed media, with the copy anchored to the capped right-hand column. */
+.materials.page-container{max-width:none;margin-inline:0}
+@media(min-width:1920px){
+ .materials-copy{padding-right:calc((100vw - var(--page-max)) / 2 + 5rem)}
+ .materials-photo img{object-position:center}
+ .materials[data-texture=terry] .materials-copy:before{background-size:60.416667% auto}
+}
+.events{--event-inset:var(--page-inset)}
+.home-story,[data-density=triple] .home-story{padding-inline:0}
+.section-inner{padding-inline:var(--page-inset);display:grid;place-items:center;min-width:0}
+.wholesale[data-composition=flatlay] .wholesale-copy{width:58%;padding-inline:0}
+.footer-main{padding-inline:var(--page-inset)}
+.footer-navigation{padding-left:0;padding-right:var(--page-inset)}
+.footer-partners{padding-left:2.25rem;padding-right:0}
+.footer-bottom-shell{border-top:0.0625rem solid color-mix(in srgb,var(--ink) 22%,transparent)}
+.footer-bottom{border-top:0;padding-inline:var(--page-inset)}
+@media(max-width:900px){:root{--page-inset:2rem}}
+@media(max-width:850px){.footer-partners{padding-inline:0}.footer-navigation{padding-right:0}}
+@media(max-width:600px){
+ :root{--page-inset:1.5rem}
+ .wholesale[data-composition=flatlay] .wholesale-copy{width:100%}
+}
+
+/* Desktop rhythm: 12 / 24 / 48 / 72; centred text keeps its own readable measure. */
+@media(min-width:1001px){
+ .events .closing-heading{margin-bottom:var(--page-inset)}
+ .events-alternating,.events-pair,.event-track{gap:var(--space-half)}
+ .event-panel{padding:var(--space-half)}
+ .footer-navigation,.footer-partners{padding-block:var(--section-space)}
+ .footer-partners{padding-left:var(--page-inset)}
+}
+
+/* 1920px artboard, proportionally scaled on desktop; never grows above 100%.
+   rem controls text, spacing and component dimensions. Breakpoints stay in px.
+   Below 1200px responsive.css reflows components with readable type. */
+:root{font-size:var(--desktop-font-size,16px)}
+@media(min-width:1080px){
+ :root{--layout-unit:1.2rem;--display-section:2.75rem;--display-secondary:2.5rem}
+}
+
+/* Resolve desktop type to the 1920px reference; avoid calc/rem font zoom bugs. */
+@media(min-width:1080px){
+ [data-hero=armadillo] .hero h1{font-size:3.375rem}
+ [data-hero=frette] .hero h1,[data-hero=cocoon] .hero h1{font-size:3.625rem}
+ .materials h2{font-size:2.875rem}
+ .story-copy h2{font-size:3.375rem}
+ [data-density=triple] .materials h2,[data-density=triple] .story-copy h2{font-size:var(--display-section)}
+ .wholesale[data-presentation=minimal] .wholesale-description{font-size:1.25rem}
+}

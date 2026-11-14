@@ -21,7 +21,7 @@
   for(const name of ['mark','type','texture'])document.querySelector(`input[name="material-${name}"][value="${state[name]}"]`).checked=true;
   section.querySelectorAll('[data-material-symbol]').forEach(symbol=>symbol.toggleAttribute('hidden',symbol.dataset.materialSymbol!==state.mark));
   const copy=text[document.documentElement.dataset.language==='en'?'en':'ru'];
-  section.querySelectorAll('h2 span').forEach((span,i)=>span.textContent=copy.lines[i]);
+  section.querySelectorAll('h2 span').forEach((span,i)=>span.textContent=copy.lines[i]+(i===0?' ':''));
   section.querySelector('.materials-description').textContent=copy.description;
   section.querySelector('img').alt=copy.alt;
   try{localStorage.setItem(key,JSON.stringify({...state,textureRevision:"linen-terry-v1"}));}catch{}

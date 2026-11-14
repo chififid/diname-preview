@@ -14,9 +14,9 @@ try{if(JSON.parse(localStorage.getItem(storageKey))?.captionRevision!=='below-v2
 // Each new visit opens the selected direction; alternatives remain available for comparison.
 settings.hero='armadillo';settings.heights.armadillo='full';
 const categories = [
- { id:'bath', title:'Для ванной', photo:'../assets/873c95c53696f4b0.webp', text:'Мягкое полотенце после душа, любимый халат и немного времени для себя. Текстиль для ваших ежедневных ритуалов.', action:'Коллекция для ванной', items:[['Банное полотенце','Песочный · 70 × 140 см','2 400 ₽','bath-towel.jpg','bath-detail.jpg'],['Вафельное полотенце','Молочный · 70 × 140 см','2 100 ₽','waffle-towel.jpg','waffle-detail.jpg']] },
- { id:'kitchen', title:'Для кухни', photo:'media/kitchen-scene.jpg', text:'Неторопливый завтрак и ужин за общим столом. Простые вещи, которые делают каждый день немного теплее.', action:'Коллекция для кухни', items:[['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','kitchen-taupe.jpg'],['Кухонное полотенце','Молочный · 50 × 70 см','850 ₽','kitchen-ivory.jpg']] },
- { id:'bedroom', title:'Для спальни', photo:'../assets/612d79aae99b1d41.webp', text:'Укутаться в плед, отложить дела и остаться дома. Спокойные оттенки и фактуры, к которым хочется прикасаться.', action:'Коллекция для спальни', items:[['Фактурный плед','Песочный · 140 × 200 см','6 800 ₽','blanket-sand.jpg'],['Мягкий плед','Карамель · 140 × 200 см','7 200 ₽','blanket-caramel.jpg']] }
+ { id:'bath', title:'Для ванной', photo:'../assets/873c95c53696f4b0.webp', text:'Мягкое полотенце после душа, любимый халат и немного времени для себя. Текстиль для ваших ежедневных ритуалов.', action:'Коллекция для ванной', items:[['Банное полотенце','Песочный · 70 × 140 см','2 400 ₽','bath-towel.webp','bath-detail.webp'],['Вафельное полотенце','Молочный · 70 × 140 см','2 100 ₽','waffle-towel.webp','waffle-detail.webp']] },
+ { id:'kitchen', title:'Для кухни', photo:'media/kitchen-scene.webp', text:'Неторопливый завтрак и ужин за общим столом. Простые вещи, которые делают каждый день немного теплее.', action:'Коллекция для кухни', items:[['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','kitchen-taupe.webp'],['Кухонное полотенце','Молочный · 50 × 70 см','850 ₽','kitchen-ivory.webp']] },
+ { id:'bedroom', title:'Для спальни', photo:'../assets/612d79aae99b1d41.webp', text:'Укутаться в плед, отложить дела и остаться дома. Спокойные оттенки и фактуры, к которым хочется прикасаться.', action:'Коллекция для спальни', items:[['Фактурный плед','Песочный · 140 × 200 см','6 800 ₽','blanket-sand.webp'],['Мягкий плед','Карамель · 140 × 200 см','7 200 ₽','blanket-caramel.webp']] }
 ];
 const categoryEditorial = [
  {heading:['Банная','коллекция'],text:'Мягкие полотенца, лёгкие халаты и спокойные природные оттенки. Для первых минут после душа, неторопливого утра и вечера, когда можно наконец выдохнуть. Любимые вещи, к которым хочется возвращаться каждый день.'},
@@ -24,12 +24,14 @@ const categoryEditorial = [
  {heading:['Коллекция','для спальни'],text:'Мягкие пледы, выразительные фактуры и оттенки, которые легко сочетать между собой. Для тихих вечеров с книгой, прохладных утренних часов и выходных без спешки. Всё, чтобы отдыхать и чувствовать себя дома.'}
 ];
 categories.forEach((category,index)=>Object.assign(category,categoryEditorial[index]));
-categories[0].items.push(['Вафельное полотенце','Песочный · 70 × 140 см','2 100 ₽','third-bath.jpg']);
-categories[1].items.push(['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','third-kitchen.jpg']);
-categories[2].items.push(['Мягкий плед','Молочный · 140 × 200 см','7 200 ₽','third-bedroom.jpg']);
+categories[0].items.push(['Вафельное полотенце','Песочный · 70 × 140 см','2 100 ₽','third-bath.webp']);
+categories[1].items.push(['Кухонное полотенце','Льняной · 50 × 70 см','850 ₽','third-kitchen.webp']);
+categories[2].items.push(['Мягкий плед','Молочный · 140 × 200 см','7 200 ₽','third-bedroom.webp']);
 // Keep original product photographs available for comparison.
 const products = [];
-document.querySelector('.collections').innerHTML = categories.map((c,i)=>`<section class="collection-row ${i%2?'reverse':''}" id="${c.id}" aria-labelledby="${c.id}-title"><article class="category"><div class="category-media"><img src="${c.photo}" alt="Текстиль в домашнем интерьере" loading="lazy" width="1000" height="1000"></div><div class="category-content"><h2 id="${c.id}-title">${c.heading.map(line=>`<span>${line}</span>`).join('')}</h2><div class="category-copy"><p class="category-description">${c.text}</p><button class="outline category-button" data-category="${c.id}">${c.action}</button></div></div></article>${c.items.map((item,itemIndex)=>{ const n=products.push({name:item[0],detail:item[1],price:item[2],image:'media/'+item[3],category:c.id})-1;return `<button class="product-card ${itemIndex===2?'third-product':''} ${item[4]?'has-detail':'zoom-detail'}" data-product="${n}" aria-label="${item[0]}, ${item[1]}"><span class="product-media"><img src="media/${item[3]}" alt="${item[0]}" width="800" height="1000" loading="lazy">${item[4]?`<img class="alternate" src="media/${item[4]}" alt="" width="800" height="1000" loading="lazy">`:''}</span><span class="product-info"><span><strong>${item[0]}</strong><small>${item[1]}</small></span><span class="price">${item[2]}</span></span></button>`;}).join('')}</section>`).join('');
+const photoStudyKey='diname-photo-study-v2';
+let photoStudy='all';try{photoStudy=localStorage.getItem(photoStudyKey)||'all'}catch{}
+document.querySelector('.collections').innerHTML = categories.map((c,i)=>`<section class="collection-row ${i%2?'reverse':''}" id="${c.id}" aria-labelledby="${c.id}-title"><article class="category"><div class="category-media"><img src="${photoStudy==='all'&&c.id==='kitchen'?'media/kitchen-editorial.webp':c.photo}" alt="Текстиль в домашнем интерьере" loading="eager" decoding="async" width="1000" height="1000"></div><div class="category-content"><h2 id="${c.id}-title">${c.heading.map(line=>`<span>${line}</span>`).join(' ')}</h2><div class="category-copy"><p class="category-description">${c.text}</p><button type="button" class="outline category-button" data-category="${c.id}">${c.action}</button></div></div></article><div class="collection-products">${c.items.map((item,itemIndex)=>{ const n=products.push({name:item[0],detail:item[1],price:item[2],image:'media/'+item[3],category:c.id})-1;return `<button type="button" class="product-card ${itemIndex===2?'third-product':''} ${item[4]?'has-detail':'zoom-detail'}" data-product="${n}" aria-label="${item[0]}, ${item[1]}"><span class="product-media"><img src="media/${photoStudy==='all'?`${c.id}-studio-${itemIndex+1}.webp`:item[3]}" alt="${item[0]}" width="800" height="1000" loading="eager" decoding="async">${item[4]?`<img class="alternate" ${photoStudy==='all'?'':`src="media/${item[4]}"`} alt="" width="800" height="1000" loading="eager" decoding="async">`:''}</span><span class="product-info"><span><strong>${item[0]}</strong><small>${item[1]}</small></span><span class="price">${item[2]}</span></span></button>`;}).join('')}</div></section>`).join('');
 const translations = {
   "Магазин": "Shop",
   "Оптовым партнёрам": "Trade enquiries",
@@ -155,13 +157,14 @@ const heroCopy={
 };
 function applyLanguage(){
  root.lang=settings.language;
+ document.querySelector('meta[name="description"]').content=settings.language==='en'?'DINAME home textiles: towels, robes, kitchen linens and throws. Collections for homes and wholesale partners.':'DINAME — текстиль для дома: полотенца, халаты, кухонный текстиль и пледы. Коллекции для дома и оптовых партнёров.';
  document.title=settings.language==='en'?'Dina.Me — textiles for your home':'Dina.Me — текстиль для дома';
  localizedNodes.forEach(({node,original,key})=>{node.textContent=original.replace(key,t(key));});
  localizedAttributes.forEach(({node,attr,original})=>node.setAttribute(attr,t(original)));
  document.querySelectorAll('.product-card').forEach((node,i)=>node.setAttribute('aria-label',`${t(products[i].name)}, ${t(products[i].detail)}`));
  const copy=heroCopy[settings.language], composition=copy[settings.hero];
  const title=document.querySelector('#hero-title');title.replaceChildren();
- composition.lines.forEach(line=>{const span=document.createElement('span');span.className='hero-line';span.textContent=line;title.append(span);});
+ composition.lines.forEach(line=>{const span=document.createElement('span');span.className='hero-line';span.textContent=line;title.append(span,document.createTextNode(' '));});
  const intro=document.querySelector('.hero .eyebrow');intro.replaceChildren();
  composition.intro.split('|').forEach(line=>{const span=document.createElement('span');span.className='intro-line';span.textContent=line;intro.append(span);});
  document.querySelector('.hero-actions a').textContent=copy.cta;
@@ -188,51 +191,24 @@ function applyLanguage(){
 
 const header = document.querySelector('.header');
 const video = document.querySelector('#hero-video');
-const videoBack = video.cloneNode(true);
-videoBack.removeAttribute('id');
-videoBack.removeAttribute('autoplay');
-video.after(videoBack);
-const videos = [video, videoBack];
-videos.forEach(v=>{v.loop=false;v.removeAttribute('loop');v.setAttribute('aria-hidden','true');});
-let activeVideo=0, blending=false, videoFrame=0;
-const blendDuration=.9;
-function resetVideoBlend(){
- cancelAnimationFrame(videoFrame);blending=false;activeVideo=0;
- videos.forEach((v,i)=>{v.pause();v.style.opacity=i?'0':'1';v.style.zIndex=i?'0':'1';});
-}
-function animateVideo(){
- cancelAnimationFrame(videoFrame);
- if(document.hidden || motionPreference.matches)return;
- const current=videos[activeVideo], next=videos[1-activeVideo];
- if(!blending && Number.isFinite(current.duration) && current.duration-current.currentTime<=blendDuration && next.readyState>=2){
-  blending=true;next.currentTime=0;next.style.zIndex='2';
-  next.play().catch(()=>{blending=false;});
- }
- if(blending){
-  const progress=Math.min(1,next.currentTime/blendDuration);
-  next.style.opacity=String(progress*progress*(3-2*progress));
-  if(progress===1){
-   current.pause();current.style.opacity='0';current.style.zIndex='0';current.currentTime=0;
-   next.style.zIndex='1';activeVideo=1-activeVideo;blending=false;
-  }
- }
- videoFrame=requestAnimationFrame(animateVideo);
-}
+// One decoder, a lightweight poster, and playback only while the hero is visible.
+const videos=[video];let heroVisible=true;
+video.loop=true;video.setAttribute('aria-hidden','true');
+function resetVideoBlend(){video.pause();}
 function resumeVideo(){
- if(document.hidden || motionPreference.matches){videos.forEach(v=>v.pause());cancelAnimationFrame(videoFrame);return;}
- videos[activeVideo].play().catch(()=>{});
- if(blending)videos[1-activeVideo].play().catch(()=>{});
- animateVideo();
+ if(document.hidden||motionPreference.matches||!heroVisible){video.pause();return;}
+ if(video.getAttribute('src'))video.play().catch(()=>{});
 }
-// If the second decoder is not ready, retain the last frame until it can blend in.
-videos.forEach(v=>v.addEventListener('canplay',()=>{if(v===videos[activeVideo])resumeVideo();}));
+video.addEventListener('canplay',resumeVideo);
+new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;resumeVideo();},{threshold:0}).observe(document.querySelector('.hero'));
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 let lenis, lastY=scrollY, direction=0, travel=0, downStarted=0, lastScrollTime=0;
 let headerTarget=0, headerOffset=0, headerVelocity=0, headerHeight=header.offsetHeight, previousFrame=0;
 const stickyProducts=[...document.querySelectorAll('.product-card')].map(element=>({element,row:element.closest('.collection-row'),offset:0}));
+const layoutScale=()=>parseFloat(getComputedStyle(root).fontSize)/16;
 function updateStickyProducts(dt){
- const active=settings.sticky && innerWidth>600;
- const inset=Math.max(0,headerHeight-headerOffset)+16;
+ const active=settings.sticky && innerWidth>=1200;
+ const inset=Math.max(0,headerHeight-headerOffset)+16*layoutScale();
  const blend=motionPreference.matches?1:1-Math.exp(-dt/110);
  const rows=new Map();
  if(active)document.querySelectorAll('.collection-row').forEach(row=>rows.set(row,row.getBoundingClientRect()));
@@ -259,11 +235,11 @@ function renderScroll(){
   if(nextDirection!==direction || now-lastScrollTime>260){travel=0;downStarted=now;}
   direction=nextDirection;travel+=Math.abs(delta);lastScrollTime=now;
  }
- if(y>64)header.classList.add('solid');else if(y<12)header.classList.remove('solid');
- const forcedVisible=y<80 || document.querySelector('dialog[open]') || header.matches(':has(:focus-visible)');
+ if(y>64*layoutScale())header.classList.add('solid');else if(y<12*layoutScale())header.classList.remove('solid');
+ const forcedVisible=y<80*layoutScale() || document.querySelector('dialog[open]') || header.matches(':has(:focus-visible)');
  if(forcedVisible)showHeader();
- else if(direction<0 && travel>32)showHeader();
- else if(direction>0 && travel>Math.max(600,innerHeight*.8) && now-downStarted>1000){
+ else if(direction<0 && travel>32*layoutScale())showHeader();
+ else if(direction>0 && travel>Math.max(600*layoutScale(),innerHeight*.8) && now-downStarted>1000){
   headerTarget=headerHeight;
  }
  if(settings.motion&&!motionPreference.matches){
@@ -288,7 +264,8 @@ function frame(time){
   headerVelocity=(headerVelocity-omega*coefficient*seconds)*decay;
   if(Math.abs(target-headerOffset)<.02 && Math.abs(headerVelocity)<.1){headerOffset=target;headerVelocity=0;}
  }
- header.style.transform=`translate3d(0,${-headerOffset}px,0)`;
+ const pixelOffset=Math.round(headerOffset*devicePixelRatio)/devicePixelRatio;
+ header.style.transform=`translate3d(0,${-pixelOffset}px,0)`;
  header.classList.toggle('hidden',headerOffset>=headerHeight-.5);
  updateStickyProducts(dt);
 
@@ -313,25 +290,31 @@ function applySettings(){
  document.querySelector('#motion').checked=settings.motion;
  document.querySelector('#sticky-products').checked=settings.sticky;
  try{localStorage.setItem(storageKey,JSON.stringify({...settings,presetRevision,layoutRevision:'compact-walnut-2026-11-14',captionRevision:'below-v2'}));}catch{}
- const nextVideo=settings.video==='limonta'?'media/limonta-hero.mov':'media/frette-hero.mp4';
- if(video.getAttribute('src')!==nextVideo){
-  resetVideoBlend();
-  videos.forEach(v=>{v.poster=settings.video==='frette'?'media/frette-poster.jpg':'';v.src=nextVideo;v.load();});
- }
+ const nextVideo=settings.video==='limonta'?'media/limonta-hero-web.mp4':'media/frette-hero-web.mp4';
+ window.dinameMedia.requestHero(nextVideo,settings.video==='frette'?'media/frette-hero-poster.webp':'media/limonta-hero-poster.webp');
  syncMotion();
 }
 applySettings();motionPreference.addEventListener('change',syncMotion);
 document.querySelector('#settings').addEventListener('change',e=>{if(['hero','font','palette','video','category','language','density','cardinfo','categorytext'].includes(e.target.name))settings[e.target.name]=e.target.value;else if(e.target.name==='height')settings.heights[settings.hero]=e.target.value;else if(e.target.id==='motion')settings.motion=e.target.checked;else if(e.target.id==='sticky-products')settings.sticky=e.target.checked;applySettings();if(document.querySelector('dialog[open]'))lenis?.stop();});
 document.querySelector('#reset').addEventListener('click',()=>{settings={...defaults,heights:{...defaults.heights}};applySettings();lenis?.stop();});
-function openDialog(id){if(id!=='settings')return;document.querySelectorAll('dialog[open]').forEach(d=>d.close());const dialog=document.getElementById(id);dialog.showModal();lenis?.stop();showHeader();document.querySelector('.shop').setAttribute('aria-expanded',String(id==='menu'));}
+function openDialog(id){if(id!=='settings')return;document.querySelectorAll('dialog[open]').forEach(d=>d.close());const dialog=document.getElementById(id);dialog.showModal();lenis?.stop();showHeader();}
 document.querySelectorAll('dialog').forEach(d=>{
  d.querySelector('.close').addEventListener('click',()=>d.close());
  d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
- d.addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))lenis?.start();document.querySelector('.shop').setAttribute('aria-expanded',String(document.querySelector('#menu').open));});
+ d.addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))lenis?.start();});
 });
 document.addEventListener('click',e=>{
  const trigger=e.target.closest('[data-open]');if(trigger)openDialog(trigger.dataset.open);
- const anchor=e.target.closest('a[href^="#"]');if(anchor){e.preventDefault();document.querySelectorAll('dialog[open]').forEach(d=>d.close());lenis?.start();const target=document.querySelector(anchor.getAttribute('href'));if(target){if(lenis)lenis.scrollTo(target,{offset:-64});else target.scrollIntoView({behavior:motionPreference.matches?'instant':'smooth'});}}
+ const anchor=e.target.closest('a[href^="#"]');
+ if(anchor){
+  const target=document.getElementById(anchor.hash.slice(1));if(!target)return;
+  e.preventDefault();document.querySelectorAll('dialog[open]').forEach(d=>d.close());lenis?.start();
+  // Match native anchor navigation: keyboard focus follows the visible destination.
+  if(!target.hasAttribute('tabindex'))target.tabIndex=-1;
+  target.focus({preventScroll:true});
+  if(lenis)lenis.scrollTo(target,{offset:-header.offsetHeight});
+  else target.scrollIntoView({behavior:motionPreference.matches?'instant':'smooth'});
+ }
 });
 document.addEventListener('keydown',e=>{if(e.shiftKey&&e.code==='KeyD'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!e.target.matches('input,textarea,[contenteditable]')){e.preventDefault();const d=document.querySelector('#settings');d.open?d.close():openDialog('settings');}});
 document.addEventListener('visibilitychange',resumeVideo);
@@ -360,25 +343,25 @@ settingsTabs.forEach((tab,index)=>{
 
 // Prototype-only colour control: transparent Bath assets keep their own lighting.
 // Image-only composition study: original labels and category layouts stay intact.
-const photoStudyKey='diname-photo-study-v2';
+
 function setPhotoStudy(mode){
  if(!['original','all'].includes(mode))mode='all';
  document.querySelector(`input[name="photo-study"][value="${mode}"]`).checked=true;
  categories.forEach((category)=>{
   const row=document.getElementById(category.id),active=mode==='all';
   row.classList.toggle('studio-study',active);
-  if(category.id==='kitchen')row.querySelector('.category-media img').src=active?'media/kitchen-editorial.jpg':category.photo;
+  if(category.id==='kitchen')row.querySelector('.category-media img').src=active?'media/kitchen-editorial.webp':category.photo;
   row.querySelectorAll('.product-card').forEach((card,i)=>{
-   const item=category.items[i],src='media/'+(active?`${category.id}-studio-${i+1}.png`:item[3]);
+   const item=category.items[i],src='media/'+(active?`${category.id}-studio-${i+1}.webp`:item[3]);
    card.querySelector('.product-media img').src=src;
-   const alternate=card.querySelector('.alternate');if(alternate)alternate.hidden=active;
+   const alternate=card.querySelector('.alternate');if(alternate){alternate.hidden=active;if(!active)alternate.src='media/'+item[4];}
    card.classList.toggle('has-detail',!active&&!!item[4]);
    products[Number(card.dataset.product)].image=src;
   });
  });
  try{localStorage.setItem(photoStudyKey,mode)}catch{}
 }
-let photoStudy='all';try{photoStudy=localStorage.getItem(photoStudyKey)||'all'}catch{}
+
 setPhotoStudy(photoStudy);
 document.querySelectorAll('input[name="photo-study"]').forEach(input=>input.addEventListener('change',()=>setPhotoStudy(input.value)));
 document.querySelector('#reset').addEventListener('click',()=>setPhotoStudy('all'));
@@ -398,3 +381,20 @@ document.querySelectorAll('[data-colourway-button]').forEach(button=>button.addE
 new MutationObserver(renderCombinations).observe(root,{attributes:true,attributeFilter:['data-palette']});
 document.querySelector('#reset').addEventListener('click',()=>{combinations={linen:'1',walnut:'1'};try{localStorage.removeItem(combinationKey)}catch{}renderCombinations()});
 renderCombinations();
+
+// Native mobile product layout comparison; no slider library or gesture interception.
+(()=>{
+ const key='diname-mobile-products-v1';
+ let value='grid';
+ try{if(localStorage.getItem(key)==='rail')value='rail';}catch{}
+ function render(){
+  root.dataset.mobileProducts=value;
+  document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.checked=input.value===value);
+  document.querySelectorAll('.collection-products').forEach(rail=>rail.scrollLeft=0);
+ }
+ document.querySelectorAll('[name="mobile-products"]').forEach(input=>input.addEventListener('change',()=>{
+  value=input.value;render();try{localStorage.setItem(key,value)}catch{}
+ }));
+ document.querySelector('#reset').addEventListener('click',()=>{value='grid';render();try{localStorage.removeItem(key)}catch{}});
+ render();
+})();

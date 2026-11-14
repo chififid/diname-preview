@@ -1,0 +1,31 @@
+/* Compact desktop baseline: shared hierarchy, gutters and copy rhythm. */
+@media(min-width:1001px){
+ :root{--display-section:clamp(2.125rem,calc(2.3 * var(--layout-unit)),2.75rem);--display-secondary:clamp(1.875rem,calc(2.1 * var(--layout-unit)),2.5rem);--page-inset:3rem}
+ [data-density=triple] .collections{padding:1.5rem var(--page-inset)}
+ [data-density=triple] .collections .category h2,[data-density=triple] .materials h2,[data-density=triple] .story-copy h2{font-size:var(--display-section);line-height:1.2;letter-spacing:-.025em}
+ .events .closing-heading h2,.wholesale[data-composition=flatlay] h2{font-size:var(--display-secondary);line-height:1.2}
+ .footer-navigation,.footer-partners{padding-top:4rem;padding-bottom:4rem}
+ .materials-description,.story-description{font-size:0.9375rem;line-height:1.6}
+ .events .closing-heading{margin-bottom:2.5rem}
+}
+/* Keep hit areas and font layout stable; contract by compositing instead of resizing. */
+.header,.header.solid{height:4.5rem;transition:background-color var(--interaction) var(--ease-hover),color var(--interaction) var(--ease-hover),border-color var(--interaction) var(--ease-hover)}
+.header .brand,.header.solid .brand{position:absolute;left:50%;top:0.9375rem;width:8.5rem;height:2.625rem;transform:translate(-50%,1.5rem) scale(1.6);transform-origin:center;transition:transform var(--motion-layout) var(--ease-move)}
+.header.solid .brand{transform:translate(-50%,0) scale(1)}
+.header .nav-left,.header .nav-right{transform:translateY(1.5rem);transition:transform var(--motion-layout) var(--ease-move)}
+.header.solid .nav-left,.header.solid .nav-right{transform:translateY(0)}
+@media(max-width:600px){.header,.header.solid{height:4rem}.header .brand,.header.solid .brand{top:0.9375rem;width:7.125rem;height:2.125rem}.header .brand{transform:translate(-50%,1rem) scale(1.2)}.header .nav-left,.header .nav-right{transform:translateY(1rem)}}
+@media(prefers-reduced-motion:reduce){.header .brand,.header .nav-left,.header .nav-right{transition:none}}
+/* Background and divider share one shrinking surface; content keeps stable hit areas. */
+.header,.header.solid{border-bottom:0;background:transparent;isolation:isolate}
+.header{--header-expansion:3rem}
+.header:before{content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:calc(100% + var(--header-expansion));box-sizing:border-box;background:transparent;border-bottom:0.0625rem solid rgb(255 255 255 / 35%);transition:height var(--motion-layout) var(--ease-move),background-color var(--interaction) var(--ease-hover),border-color var(--interaction) var(--ease-hover);pointer-events:none}
+.header.solid:before{height:100%;background:var(--header-surface,var(--paper));border-color:color-mix(in srgb,var(--ink) 28%,var(--paper))}
+@media(max-width:600px){.header{--header-expansion:2rem}}
+@media(prefers-reduced-motion:reduce){.header:before{transition:none}}
+/* Keep compact image-led sections compact on ultrawide displays. */
+@media(min-width:1001px){
+ :root[data-density=triple] .materials{--material-height:clamp(26.25rem,calc(38 * var(--layout-unit)),47.5rem)}
+ :root[data-density=triple] .home-story{min-height:clamp(26.25rem,calc(38 * var(--layout-unit)),47.5rem)}
+}
+button{-webkit-appearance:none;appearance:none}
